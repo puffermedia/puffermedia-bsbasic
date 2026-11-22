@@ -1,0 +1,89 @@
+@use "variables" as v;
+
+// Home page hero — the "Banner" layout of mod_custom (html/mod_custom/banner.php)
+// in the `banner` position. Modelled on Cassiopeia's banner-overlay: full-bleed
+// background image, dark scrim, centred light text.
+
+// A hero replaces the pale band: drop its surface, rule and container padding
+// so the image can run edge to edge.
+.bsbasic-banner:has(.bsbasic-hero) {
+	background: none;
+	border-bottom: 0;
+
+	.bsbasic-banner__inner {
+		max-width: none;
+		padding: 0;
+	}
+}
+
+.bsbasic-hero {
+	--bsbasic-hero-scrim: rgba(22, 24, 29, .55);
+
+	color: #fff;
+	background-color: v.$ink;
+	background-image: var(--bsbasic-hero-image, none);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	// Parallax, only where it is cheap and wanted
+	@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+		background-attachment: fixed;
+	}
+
+	&__overlay {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: min(70vh, 40rem);
+		padding: 3rem 1.5rem;
+		text-align: center;
+		background-color: var(--bsbasic-hero-scrim);
+	}
+
+	&__content {
+		max-width: 46rem;
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	h1,
+	h2,
+	h3 {
+		color: inherit;
+	}
+
+	h1,
+	h2 {
+		margin-bottom: 1rem;
+		font-size: clamp(2rem, 5vw, 3.5rem);
+		line-height: 1.1;
+
+		// Short accent rule under the heading
+		&::after {
+			display: block;
+			width: 4rem;
+			height: 4px;
+			margin: 1.25rem auto 0;
+			content: "";
+			background: var(--bsbasic-accent, #{v.$accent});
+		}
+	}
+
+	p {
+		font-size: 1.125rem;
+	}
+
+	a:not(.btn) {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	@media (max-height: 740px) {
+		&__overlay {
+			min-height: min(100vh, 32rem);
+		}
+	}
+}

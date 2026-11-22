@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<name>plg_system_bsbasicog</name>
+	<author>PufferMedia</author>
+	<creationDate>November 2026</creationDate>
+	<copyright>Copyright (C) 2026. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.2.1</version>
+	<description>PLG_SYSTEM_BSBASICOG_XML_DESCRIPTION</description>
+	<namespace path="src">Puffermedia\Plugin\System\BsbasicOg</namespace>
+	<files>
+		<folder plugin="bsbasicog">services</folder>
+		<folder>forms</folder>
+		<folder>src</folder>
+		<filename>LICENSE.txt</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/plg_system_bsbasicog.ini</language>
+		<language tag="en-GB">en-GB/plg_system_bsbasicog.sys.ini</language>
+	</languages>
+</extension>

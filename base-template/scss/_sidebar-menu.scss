@@ -1,0 +1,144 @@
+@use "variables" as v;
+
+// Menus in a sidebar stack vertically. Core mod_menu puts Bootstrap's .nav on
+// the list, which is a row-direction flexbox.
+.bsbasic-sidebar .mod-menu {
+	flex-direction: column;
+	flex-wrap: nowrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bsbasic-sidebar .mod-menu a {
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+// Typography: top-level items echo the small-caps card titles (see _cards);
+// submenu items go back to regular weight and normal case.
+.bsbasic-sidebar .mod-menu {
+	> li > a,
+	> li > .mod-menu__heading,
+	> li > .mod-menu__separator,
+	> li > .mod-menu__toggle-sub .mod-menu__heading {
+		font-size: .75rem;
+		font-weight: 700;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+	}
+
+	.mod-menu__sub a {
+		font-size: .9rem;
+		font-weight: 400;
+		letter-spacing: normal;
+		text-transform: none;
+	}
+}
+
+// Rows: an accent bar marks the current page and its ancestors pick up the
+// accent colour. The hairline between top-level items is the Sidebar Menu
+// Dividers param (--divided).
+.bsbasic-sidebar--divided .mod-menu > li + li {
+	border-top: 1px solid var(--bsbasic-rule);
+}
+
+.bsbasic-sidebar .mod-menu {
+
+	li > a,
+	li > .mod-menu__heading,
+	li > .mod-menu__separator {
+		display: block;
+		padding: .6rem .75rem;
+	}
+
+	.mod-menu__sub a {
+		padding-block: .4rem;
+	}
+
+	li.current > a {
+		color: var(--bsbasic-accent);
+		box-shadow: inset 3px 0 0 var(--bsbasic-accent);
+	}
+
+	li.active:not(.current) > a {
+		color: var(--bsbasic-accent);
+	}
+}
+
+// Collapsible sidebar menu (Sidebar Menu param). Everything below sits under
+// .is-ready, which js/sidebar-menu.js adds, so without JS the menu stays open.
+
+.bsbasic-sidebar--collapsible.is-ready {
+	.mod-menu .parent {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		> a,
+		> .mod-menu__heading,
+		> .mod-menu__separator {
+			flex: 1 1 0;
+			min-width: 0;
+		}
+
+		> .mod-menu__sub {
+			flex: 0 0 100%;
+			display: none;
+			margin: 0;
+			padding: 0 0 0 1rem;
+		}
+
+		&.is-open > .mod-menu__sub {
+			display: block;
+		}
+	}
+
+	// Heading/separator parents: the toggle wraps the label itself.
+	.mod-menu__toggle-sub:has(.mod-menu__heading) {
+		flex: 1 1 0;
+		justify-content: space-between;
+		text-align: start;
+	}
+
+	// The icon font is not loaded, so the caret is drawn with borders.
+	.mod-menu__toggle-sub {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: .35rem .5rem;
+		border: 0;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+
+		&:focus-visible {
+			outline: 2px solid var(--bsbasic-accent);
+			outline-offset: -2px;
+		}
+
+		.icon-chevron-down {
+			display: inline-block;
+			width: .45rem;
+			height: .45rem;
+			margin: 0 0 .2rem;
+			border-right: 2px solid currentColor;
+			border-bottom: 2px solid currentColor;
+			transform: rotate(45deg);
+			transition: transform v.$transition-fast;
+
+			&::before {
+				content: none;
+			}
+		}
+
+		&[aria-expanded="true"] .icon-chevron-down {
+			transform: rotate(225deg) translate(-1px, -1px);
+		}
+	}
+}

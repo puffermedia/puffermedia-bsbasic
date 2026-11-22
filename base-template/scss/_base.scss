@@ -1,0 +1,171 @@
+@use "sass:color";
+@use "variables" as v;
+
+// Global typography, color tokens, links, buttons, forms.
+// Runs after Bootstrap (see index.php), so same-specificity rules win.
+
+:root {
+	--bsbasic-accent: #{v.$accent};
+	--bsbasic-accent-dark: #{v.$accent-dark};
+	// Primary falls back to the accent until a Primary Color is set.
+	--bsbasic-primary: var(--bsbasic-accent);
+	--bsbasic-ink: #{v.$ink};
+	--bsbasic-heading-color: var(--bsbasic-ink);
+	--bsbasic-ink-soft: #{v.$ink-soft};
+	--bsbasic-muted: #{v.$muted};
+	--bsbasic-rule: #{v.$rule};
+	--bsbasic-surface: #{v.$surface};
+	--bsbasic-radius: #{v.$radius};
+	--bsbasic-radius-sm: calc(var(--bsbasic-radius) * .8);
+	--bsbasic-paper: #{v.$paper};
+	--bsbasic-link: var(--bsbasic-primary);
+	// Left indent for the header, breadcrumbs, titles, blog items and bottom/footer bands (wide screens).
+	--bsbasic-indent: 5rem;
+	--bsbasic-reading-width: #{v.$reading-width};
+	--bsbasic-header-pad: 1rem;
+	--bsbasic-shadow-sm: #{v.$shadow-sm};
+	--bsbasic-shadow-md: #{v.$shadow-md};
+	--bsbasic-body-font: #{v.$font-sans};
+	--bsbasic-heading-font: #{v.$font-serif};
+
+	--bs-body-color: var(--bsbasic-ink);
+	--bs-body-bg: var(--bsbasic-paper);
+	--bs-body-font-family: var(--bsbasic-body-font);
+	--bs-primary: var(--bsbasic-primary);
+	// The rest of the primary set, for the default accent. Bootstrap's .text-primary,
+	// .bg-primary, .text-bg-primary, .link-primary and .alert-primary read these.
+	// index.php overrides them once a Primary or Accent Color is set.
+	--bs-primary-rgb: #{color.channel(v.$accent, "red", $space: rgb)}, #{color.channel(v.$accent, "green", $space: rgb)}, #{color.channel(v.$accent, "blue", $space: rgb)};
+	--bs-primary-text-emphasis: #{color.mix(#000, v.$accent, 60%)};
+	--bs-primary-bg-subtle: #{color.mix(#fff, v.$accent, 80%)};
+	--bs-primary-border-subtle: #{color.mix(#fff, v.$accent, 60%)};
+	--bs-border-color: var(--bsbasic-rule);
+}
+
+body {
+	background: var(--bsbasic-paper);
+	font-family: var(--bsbasic-body-font);
+	color: var(--bsbasic-ink);
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: var(--bsbasic-heading-font);
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -.015em;
+	color: var(--bsbasic-heading-color);
+}
+
+a {
+	color: var(--bsbasic-link);
+	text-underline-offset: .2em;
+	text-decoration-thickness: 1px;
+
+	&:hover {
+		color: var(--bsbasic-accent-dark);
+		text-decoration-thickness: 2px;
+	}
+}
+
+:focus-visible {
+	outline: 2px solid var(--bsbasic-accent);
+	outline-offset: 2px;
+}
+
+::selection {
+	background: color-mix(in srgb, var(--bsbasic-accent) 22%, transparent);
+}
+
+// Buttons — accent driven, slightly squarer than stock Bootstrap
+.btn {
+	--bs-btn-border-radius: var(--bsbasic-radius-sm);
+	font-weight: 600;
+	letter-spacing: .01em;
+}
+
+.btn-primary {
+	--bs-btn-bg: var(--bsbasic-primary);
+	--bs-btn-border-color: var(--bsbasic-primary);
+	--bs-btn-hover-bg: var(--bsbasic-accent-dark);
+	--bs-btn-hover-border-color: var(--bsbasic-accent-dark);
+	--bs-btn-active-bg: var(--bsbasic-accent-dark);
+	--bs-btn-active-border-color: var(--bsbasic-accent-dark);
+	--bs-btn-disabled-bg: var(--bsbasic-primary);
+	--bs-btn-disabled-border-color: var(--bsbasic-primary);
+}
+
+// Secondary follows the primary color, same as .btn-primary
+.btn-secondary {
+	--bs-btn-bg: var(--bsbasic-primary);
+	--bs-btn-border-color: var(--bsbasic-primary);
+	--bs-btn-hover-bg: var(--bsbasic-accent-dark);
+	--bs-btn-hover-border-color: var(--bsbasic-accent-dark);
+	--bs-btn-active-bg: var(--bsbasic-accent-dark);
+	--bs-btn-active-border-color: var(--bsbasic-accent-dark);
+	--bs-btn-disabled-bg: var(--bsbasic-primary);
+	--bs-btn-disabled-border-color: var(--bsbasic-primary);
+}
+
+.btn-outline-primary {
+	--bs-btn-color: var(--bsbasic-primary);
+	--bs-btn-border-color: var(--bsbasic-primary);
+	--bs-btn-hover-bg: var(--bsbasic-accent);
+	--bs-btn-hover-border-color: var(--bsbasic-accent);
+	--bs-btn-active-bg: var(--bsbasic-accent-dark);
+	--bs-btn-active-border-color: var(--bsbasic-accent-dark);
+}
+
+// Bootstrap hard-codes these per color in bootstrap.min.css; match the default accent.
+.text-bg-primary {
+	color: #fff !important;
+}
+
+.link-primary:is(:hover, :focus) {
+	color: RGBA(#{color.channel(color.mix(#000, v.$accent, 20%), "red", $space: rgb)}, #{color.channel(color.mix(#000, v.$accent, 20%), "green", $space: rgb)}, #{color.channel(color.mix(#000, v.$accent, 20%), "blue", $space: rgb)}, var(--bs-link-opacity, 1)) !important;
+	text-decoration-color: RGBA(#{color.channel(color.mix(#000, v.$accent, 20%), "red", $space: rgb)}, #{color.channel(color.mix(#000, v.$accent, 20%), "green", $space: rgb)}, #{color.channel(color.mix(#000, v.$accent, 20%), "blue", $space: rgb)}, var(--bs-link-underline-opacity, 1)) !important;
+}
+
+// Forms
+.form-control,
+.form-select {
+	border-color: #cfd3d9;
+	border-radius: var(--bsbasic-radius-sm);
+
+	&:focus {
+		border-color: var(--bsbasic-accent);
+		box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--bsbasic-accent) 22%, transparent);
+	}
+}
+
+.form-label,
+label {
+	font-size: .9rem;
+	font-weight: 600;
+	color: var(--bsbasic-ink-soft);
+}
+
+.alert {
+	border-radius: var(--bsbasic-radius);
+}
+
+// Pagination
+.pagination {
+	--bs-pagination-color: var(--bsbasic-primary);
+	--bs-pagination-hover-color: var(--bsbasic-accent-dark);
+	--bs-pagination-active-bg: var(--bsbasic-primary);
+	--bs-pagination-active-border-color: var(--bsbasic-primary);
+	--bs-pagination-border-color: var(--bsbasic-rule);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}

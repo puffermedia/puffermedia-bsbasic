@@ -1,0 +1,18 @@
+// Logo / tagline
+
+.bsbasic-logo {
+	max-height: 44px;
+	width: auto;
+}
+
+.bsbasic-tagline {
+	margin-left: .85rem;
+	padding-left: .85rem;
+	border-left: 1px solid var(--bsbasic-rule);
+	font-family: var(--bsbasic-body-font);
+	font-size: .8rem;
+	font-weight: 500;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	color: var(--bsbasic-muted);
+}

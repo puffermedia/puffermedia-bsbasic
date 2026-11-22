@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" method="upgrade">
+	<name>pkg_puffermedia_bsbasic</name>
+	<packagename>puffermedia_bsbasic</packagename>
+	<author>PufferMedia</author>
+	<creationDate>November 2026</creationDate>
+	<copyright>Copyright (C) 2026. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>0.0.0</version>
+	<description>Installs the puffermedia-bsbasic template together with its System - BS Basic Open Graph plugin (adds an Open Graph tab to articles). The version above is replaced with the template's version by scripts/package-bundle.sh.</description>
+	<files folder="packages">
+		<file type="template" id="puffermedia-bsbasic" client="site">tpl_puffermedia-bsbasic.zip</file>
+		<file type="plugin" id="bsbasicog" group="system">plg_system_bsbasicog.zip</file>
+	</files>
+</extension>

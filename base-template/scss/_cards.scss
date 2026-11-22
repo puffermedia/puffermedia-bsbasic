@@ -1,0 +1,76 @@
+@use "variables" as v;
+
+// Module "card" chrome comes from Joomla core's `card` module style;
+// this refines it: hairline border, no shadow, small-caps module titles.
+
+.bsbasic-main .card,
+.bsbasic-top-a .card,
+.bsbasic-top-b .card,
+.bsbasic-bottom-a .card,
+.bsbasic-bottom-b .card {
+	margin-bottom: 1.5rem;
+	border: 1px solid var(--bsbasic-rule);
+	border-radius: var(--bsbasic-radius);
+	box-shadow: var(--bsbasic-shadow-sm);
+	background: #fff;
+	overflow: hidden;
+}
+
+.card-header {
+	background: transparent;
+	border-bottom: 1px solid var(--bsbasic-rule);
+	padding: .85rem 1.25rem;
+	font-family: var(--bsbasic-body-font);
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--bsbasic-muted);
+	margin: 0;
+}
+
+.card-body {
+	padding: 1.25rem;
+}
+
+// mod_articles items (core markup, e.g. the home page tiles) styled like cards
+.mod-articles-items > li {
+	display: flex;
+	min-width: 0;
+}
+
+// Intro images carry fixed width/height attributes; let them shrink to the tile
+.mod-articles-image {
+	margin: 0 0 .75rem;
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.mod-articles-item {
+	flex: 1;
+	padding: 1.25rem;
+	border: 1px solid var(--bsbasic-rule);
+	border-radius: var(--bsbasic-radius);
+	box-shadow: var(--bsbasic-shadow-sm);
+	background: #fff;
+	transition: box-shadow v.$transition-fast, transform v.$transition-fast;
+	// Hover effect: see _animations.scss (Tile Hover Effect param)
+}
+
+.mod-articles-title {
+	margin-top: 0;
+	font-size: 1.15rem;
+
+	a {
+		text-decoration: none;
+		color: inherit;
+
+		&:hover {
+			color: var(--bsbasic-accent-dark);
+		}
+	}
+}

@@ -1,0 +1,24 @@
+// Top utility bar — slim, ink-colored
+
+.bsbasic-topbar {
+	background: var(--bsbasic-ink);
+	color: rgba(255, 255, 255, .8);
+	padding-block: .4rem;
+	font-size: .8rem;
+	letter-spacing: .02em;
+
+	a {
+		color: #fff;
+		text-decoration: none;
+
+		&:hover {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+
+	p,
+	ul {
+		margin: 0;
+	}
+}

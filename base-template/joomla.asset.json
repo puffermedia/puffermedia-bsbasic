@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "puffermedia-bsbasic",
+  "version": "1.6.1",
+  "description": "Assets used by the puffermedia-bsbasic site template.",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "tpl.bsbasic.template",
+      "description": "Compiled template stylesheet (built from scss/).",
+      "type": "style",
+      "uri": "template.css"
+    },
+    {
+      "name": "tpl.bsbasic.user",
+      "description": "Optional client overrides. Loaded only when css/user.css exists; never shipped in the package.",
+      "type": "style",
+      "uri": "user.css",
+      "dependencies": [
+        "tpl.bsbasic.template"
+      ]
+    },
+    {
+      "name": "tpl.bsbasic.sticky",
+      "description": "Sticky header behaviour (loaded only when the Sticky Header param is on).",
+      "type": "script",
+      "uri": "sticky.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "tpl.bsbasic.sidebarmenu",
+      "description": "Collapsible sidebar menu behaviour (loaded only when the Sidebar Menu param is Collapsible).",
+      "type": "script",
+      "uri": "sidebar-menu.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "tpl.bsbasic.animate",
+      "description": "Scroll-in entrance animations for cards and sections (loaded only when the Entrance Animation param is not None).",
+      "type": "script",
+      "uri": "animate.js",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "tpl.bsbasic.backtotop",
+      "description": "Back-to-top button behaviour (loaded only when the Back-to-Top param is on).",
+      "type": "script",
+      "uri": "template.js",
+      "attributes": {
+        "defer": true
+      }
+    }
+  ]
+}

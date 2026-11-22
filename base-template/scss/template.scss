@@ -1,0 +1,26 @@
+/*
+ * Bootstrap Basic — custom styles ("modern editorial" look).
+ * Everything else (grid, spacing, components) comes straight from
+ * Joomla's own bundled Bootstrap 5 — no separate framework is loaded.
+ *
+ * Compiled to ../css/template.css — do not edit that file directly,
+ * it is overwritten on every build. Edit these .scss files instead.
+ */
+
+@use "base";
+@use "layout";
+@use "header";
+@use "back-to-top";
+@use "branding";
+@use "topbar";
+@use "search";
+@use "sections";
+@use "hero";
+@use "cards";
+@use "sidebar-menu";
+@use "breadcrumbs";
+@use "content";
+@use "footer";
+@use "feed";
+@use "animations";
+@use "dev";

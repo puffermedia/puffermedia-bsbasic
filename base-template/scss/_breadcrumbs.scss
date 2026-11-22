@@ -1,0 +1,50 @@
+// Breadcrumbs — small caps-style trail. Joomla's mod_breadcrumbs renders
+// <ol class="breadcrumb">; the <ul> rules cover custom overrides.
+
+.bsbasic-breadcrumbs {
+	font-size: .78rem;
+	font-weight: 500;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+
+	// Left indent on wide screens, matching blog items and page headers.
+	@media (min-width: 992px) {
+		padding-inline-start: var(--bsbasic-indent);
+	}
+
+	.breadcrumb {
+		--bs-breadcrumb-divider: "/";
+		--bs-breadcrumb-divider-color: #b3b8c0;
+		--bs-breadcrumb-item-active-color: var(--bsbasic-muted);
+		margin-bottom: 0;
+		padding: 0;
+		// Core's mod_breadcrumbs adds px-3 (!important); the wrapper handles the indent.
+		padding-inline: 0 !important;
+		background: none;
+	}
+
+	a {
+		color: var(--bsbasic-muted);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--bsbasic-accent);
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+
+		li {
+			display: inline-block;
+
+			&:not(:last-child)::after {
+				content: "/";
+				margin: 0 .5rem;
+				color: #b3b8c0;
+			}
+		}
+	}
+}

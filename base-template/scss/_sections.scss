@@ -1,0 +1,21 @@
+// Banded content sections around the main area
+
+.bsbasic-banner {
+	background: var(--bsbasic-surface);
+	border-bottom: 1px solid var(--bsbasic-rule);
+
+	&__inner {
+		padding-block: 1rem;
+	}
+}
+
+// bottom-a and bottom-b tile side by side in one band (stacked below lg).
+.bsbasic-bottom {
+	background: var(--bsbasic-surface);
+	border-top: 1px solid var(--bsbasic-rule);
+
+	// Inside the Container Background Color box it shows that color instead.
+	.bsbasic-main-inner > & {
+		background: transparent;
+	}
+}

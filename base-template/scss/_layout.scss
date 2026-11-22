@@ -1,0 +1,42 @@
+// Sticky footer layout — keeps .bsbasic-main growing to push the
+// footer to the bottom on short pages.
+
+body.site {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+// .bsbasic-main is a <div>: only the component output is <main>, the
+// sidebars are <aside>, so crawlers and screen readers find the real content.
+.bsbasic-main {
+	flex: 1 0 auto;
+}
+
+// Container Background Color: one wrapper from top-a to bottom-b carries the
+// color, so the body color shows around it. It takes over main's growth so the
+// footer still sticks to the bottom on short pages.
+.bsbasic-main-inner {
+	background: var(--bsbasic-container-bg);
+	display: flex;
+	flex: 1 0 auto;
+	flex-direction: column;
+	// Equal inner space on both sides; replaces the container's thin gutter.
+	padding-inline: var(--bsbasic-container-pad, 1.5rem);
+}
+
+// Left indent on wide screens, matching blog items and page headers.
+.bsbasic-bottom,
+.bsbasic-footer {
+	> * {
+		@media (min-width: 992px) {
+			padding-inline-start: var(--bsbasic-indent);
+		}
+	}
+}
+
+.bsbasic-header .navbar > * {
+	@media (min-width: 992px) {
+		padding-inline-start: var(--bsbasic-indent);
+	}
+}

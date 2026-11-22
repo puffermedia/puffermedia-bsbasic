@@ -1,0 +1,450 @@
+@use "variables" as v;
+
+// Main header / navbar — light, hairline border, underline-on-hover links.
+
+// Sticky header: in-page links stop below it (offset measured in js/sticky.js).
+html.bsbasic-has-sticky {
+	scroll-padding-top: var(--bsbasic-sticky-offset, 5rem);
+}
+
+.bsbasic-header {
+	// Colour scheme tokens; the --dark / --primary / --accent modifiers (Header Color
+	// Scheme param) only swap these.
+	--bsbasic-nav-bg: #fff;
+	--bsbasic-nav-fg: var(--bsbasic-ink-soft);
+	--bsbasic-nav-fg-strong: var(--bsbasic-ink);
+	--bsbasic-nav-line: var(--bsbasic-accent);
+	--bsbasic-nav-active: var(--bsbasic-accent);
+	--bsbasic-nav-border: var(--bsbasic-rule);
+	// Menu Style: Pills (active item fill, hover tint).
+	--bsbasic-nav-pill-bg: var(--bsbasic-primary);
+	--bsbasic-nav-pill-fg: #fff;
+	--bsbasic-nav-pill-hover: color-mix(in srgb, var(--bsbasic-nav-fg-strong) 8%, transparent);
+
+	background: var(--bsbasic-nav-bg);
+	border-bottom: 1px solid var(--bsbasic-nav-border);
+	box-shadow: var(--bsbasic-shadow-sm);
+
+	&--dark {
+		--bsbasic-nav-bg: var(--bsbasic-ink);
+		--bsbasic-nav-fg: rgba(255, 255, 255, .72);
+		--bsbasic-nav-fg-strong: #fff;
+		--bsbasic-nav-active: #fff;
+		--bsbasic-nav-border: rgba(255, 255, 255, .14);
+	}
+
+	&--primary {
+		--bsbasic-nav-bg: var(--bsbasic-primary);
+		--bsbasic-nav-fg: rgba(255, 255, 255, .85);
+		--bsbasic-nav-fg-strong: #fff;
+		--bsbasic-nav-line: #fff;
+		--bsbasic-nav-active: #fff;
+		--bsbasic-nav-border: color-mix(in srgb, var(--bsbasic-primary) 85%, #000);
+		--bsbasic-nav-pill-bg: rgba(255, 255, 255, .2);
+	}
+
+	&--accent {
+		--bsbasic-nav-bg: var(--bsbasic-accent);
+		--bsbasic-nav-fg: rgba(255, 255, 255, .85);
+		--bsbasic-nav-fg-strong: #fff;
+		--bsbasic-nav-line: #fff;
+		--bsbasic-nav-active: #fff;
+		--bsbasic-nav-border: var(--bsbasic-accent-dark);
+		--bsbasic-nav-pill-bg: rgba(255, 255, 255, .2);
+	}
+
+	&.sticky-top {
+		box-shadow: var(--bsbasic-shadow-md);
+	}
+
+	// Sticky Header Behavior (js/sticky.js toggles the classes): Hide on scroll
+	// slides the header away, Shrink tightens its padding.
+	&.sticky-top {
+		transition: transform v.$transition-base;
+
+		&.is-hidden {
+			transform: translateY(-100%);
+		}
+	}
+
+	&[data-sticky="shrink"] {
+		.navbar {
+			transition: padding-block v.$transition-base;
+		}
+
+		.navbar-brand {
+			transition: font-size v.$transition-base;
+		}
+
+		&.is-scrolled {
+			--bsbasic-header-pad: .35rem;
+
+			.navbar-brand {
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		&.sticky-top,
+		.navbar,
+		.navbar-brand {
+			transition: none;
+		}
+	}
+
+	// Header Shadow: None (also beats the sticky shadow).
+	&.bsbasic-header--flat,
+	&.bsbasic-header--flat.sticky-top {
+		box-shadow: none;
+	}
+
+	.navbar {
+		padding-block: var(--bsbasic-header-pad);
+		background: transparent;
+	}
+
+	.navbar-brand {
+		font-family: var(--bsbasic-heading-font);
+		font-size: 1.45rem;
+		font-weight: 700;
+		letter-spacing: -.02em;
+		color: var(--bsbasic-nav-fg-strong);
+
+		&:hover {
+			color: var(--bsbasic-nav-fg-strong);
+		}
+	}
+
+	.navbar-toggler {
+		border-color: var(--bsbasic-nav-border);
+		border-radius: var(--bsbasic-radius-sm);
+	}
+
+	// Menu module output (ul.mod-menu > li.nav-item > a). Core gives links only
+	// their anchor_css class, not .nav-link, so match the markup directly.
+	.mod-menu {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		gap: .25rem;
+		flex-wrap: nowrap;
+		align-items: center;
+
+		// Every top-level item is the same kind of box, so items with and
+		// without a caret share one baseline.
+		> li {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	:is(.nav-link, .mod-menu a, .mod-menu__heading) {
+		position: relative;
+		display: block;
+		padding: .5rem .85rem;
+		font-size: .92rem;
+		font-weight: 500;
+		letter-spacing: .01em;
+		color: var(--bsbasic-nav-fg);
+		text-decoration: none;
+		white-space: nowrap;
+		transition: color v.$transition-fast;
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: .85rem;
+			right: .85rem;
+			bottom: .2rem;
+			height: 2px;
+			background: var(--bsbasic-nav-line);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform v.$transition-base;
+		}
+
+		&:hover,
+		&:focus {
+			color: var(--bsbasic-nav-fg-strong);
+			text-decoration: none;
+
+			&::after {
+				transform: scaleX(1);
+			}
+		}
+	}
+
+	// Drop-down indicator. The toggle button holds an empty
+	// span.icon-chevron-down; the icon font is not loaded here, so the caret
+	// is drawn with borders.
+	.mod-menu__toggle-sub {
+		display: inline-flex;
+		align-items: center;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+
+		.icon-chevron-down {
+			display: inline-block;
+			width: .45rem;
+			height: .45rem;
+			margin: 0 0 .2rem;
+			border-right: 2px solid currentColor;
+			border-bottom: 2px solid currentColor;
+			transform: rotate(45deg);
+			transition: transform v.$transition-fast;
+
+			&::before {
+				content: none;
+			}
+		}
+
+		&[aria-expanded="true"] .icon-chevron-down {
+			transform: rotate(225deg) translate(-1px, -1px);
+		}
+	}
+
+	// Link + toggle sit side by side as one item: the link keeps only a hairline
+	// of right padding and the toggle supplies the rest, so parents match the
+	// width rhythm of plain items.
+	.mod-menu .parent {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+
+		> a {
+			padding-right: .15rem;
+
+			&::after {
+				right: .15rem;
+			}
+		}
+
+		> .mod-menu__toggle-sub {
+			padding: 0 .85rem 0 .15rem;
+		}
+
+		// Heading/separator parents: the toggle wraps the label itself.
+		> .mod-menu__toggle-sub:has(.mod-menu__heading) {
+			padding: 0 .85rem 0 0;
+
+			.icon-chevron-down {
+				margin-left: -.35rem;
+			}
+		}
+	}
+
+	// Submenus. On desktop the dropdown is CSS-only (hover or keyboard focus);
+	// the toggle button core mod_menu renders beside the link is only a caret
+	// there. Below the nav breakpoint submenus are always open.
+	.mod-menu__sub {
+		margin: 0;
+		padding: .4rem;
+		list-style: none;
+
+		:is(.nav-link, .mod-menu a, .mod-menu__heading) {
+			display: block;
+			padding: .45rem .75rem;
+			font-size: .88rem;
+			border-radius: var(--bsbasic-radius-sm);
+			white-space: nowrap;
+
+			&::after {
+				display: none;
+			}
+
+			&:hover,
+			&:focus {
+				background: v.$surface;
+				color: var(--bsbasic-accent);
+			}
+		}
+
+		.current > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+		.active > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+		:is(.nav-link, .mod-menu a, .mod-menu__heading).active,
+		:is(.nav-link, .mod-menu a, .mod-menu__heading)[aria-current] {
+			color: var(--bsbasic-accent);
+		}
+	}
+
+	.current > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+	.active > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+	:is(.nav-link, .mod-menu a, .mod-menu__heading).active,
+	:is(.nav-link, .mod-menu a, .mod-menu__heading)[aria-current] {
+		color: var(--bsbasic-nav-fg-strong);
+
+		&::after {
+			transform: scaleX(1);
+		}
+	}
+
+	// Collapse Breakpoint param: the same rules are emitted once per breakpoint
+	// and switched by a modifier class on the header. The navbar-expand-* and
+	// flex-*-row classes in index.php follow the same choice.
+	// Mobile Menu: Offcanvas. The panel takes the header scheme's colors; from the
+	// collapse breakpoint up Bootstrap shows it inline (transparent, no header).
+	.offcanvas {
+		--bs-offcanvas-bg: var(--bsbasic-nav-bg);
+		--bs-offcanvas-color: var(--bsbasic-nav-fg);
+		--bs-offcanvas-width: min(20rem, 85vw);
+		--bs-offcanvas-border-color: var(--bsbasic-nav-border);
+	}
+
+	.offcanvas-title {
+		font-family: var(--bsbasic-heading-font);
+		color: var(--bsbasic-nav-fg-strong);
+	}
+
+	// A sticky header is its own stacking context (z-index 1020) below Bootstrap's
+	// backdrop (1040), which would cover the panel; lift it while the menu is open.
+	&:has(.offcanvas:is(.show, .showing, .hiding)) {
+		z-index: 1046;
+	}
+
+	// Top-level menu labels (links, and heading/separator labels wrapped in the toggle).
+	$top-links: ".mod-menu > li > :is(a, .mod-menu__heading), .mod-menu > li > .mod-menu__toggle-sub > .mod-menu__heading";
+
+	@each $name, $max in (md: 767.98px, lg: 991.98px, xl: 1199.98px) {
+		&.bsbasic-header--bp-#{$name} {
+			@media (max-width: $max) {
+				.mod-menu {
+					flex-direction: column;
+					padding-top: .75rem;
+				}
+
+				:is(.nav-link, .mod-menu a, .mod-menu__heading)::after {
+					display: none;
+				}
+
+				.mod-menu__toggle-sub .icon-chevron-down {
+					display: none;
+				}
+
+				// Submenus are always open here, so the toggle button has no job and
+				// would sit as an empty box under the link. Heading/separator parents
+				// keep it: the button wraps their label.
+				.mod-menu__toggle-sub:not(:has(.mod-menu__heading)) {
+					display: none;
+				}
+
+				.mod-menu {
+					flex-wrap: wrap;
+					align-items: stretch;
+				}
+
+				.mod-menu .parent {
+					display: block;
+
+					> a {
+						padding-right: .85rem;
+					}
+				}
+
+				.mod-menu__sub {
+					margin-left: .85rem;
+					padding: 0 0 .25rem .5rem;
+					border-left: 2px solid var(--bsbasic-nav-border);
+				}
+
+				.current > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+				.active > :is(.nav-link, .mod-menu a, .mod-menu__heading),
+				:is(.nav-link, .mod-menu a, .mod-menu__heading).active,
+				:is(.nav-link, .mod-menu a, .mod-menu__heading)[aria-current] {
+					color: var(--bsbasic-nav-active);
+				}
+			}
+
+			// Desktop: floating dropdown panel under each parent item.
+			@media (min-width: #{$max + .02px}) {
+				.mod-menu .parent {
+					position: relative;
+
+					&:hover > .mod-menu__sub,
+					&:focus-within > .mod-menu__sub {
+						opacity: 1;
+						visibility: visible;
+						transform: none;
+						transition-delay: 0s;
+					}
+				}
+
+				.mod-menu__sub {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					z-index: 1030;
+					min-width: 12rem;
+					// The panel is always paper, whatever the header scheme.
+					--bsbasic-nav-fg: var(--bsbasic-ink-soft);
+					--bsbasic-nav-fg-strong: var(--bsbasic-ink);
+					background: v.$paper;
+					border: 1px solid var(--bsbasic-rule);
+					border-radius: var(--bsbasic-radius);
+					box-shadow: var(--bsbasic-shadow-md);
+					opacity: 0;
+					visibility: hidden;
+					transform: translateY(.35rem);
+					transition: opacity v.$transition-base, transform v.$transition-base, visibility 0s linear .2s;
+
+					// Third level opens sideways.
+					.mod-menu__sub {
+						top: -.45rem;
+						left: 100%;
+					}
+				}
+
+				// Menu Style param, top level only; the whole item (link + caret) is the target.
+				&.bsbasic-header--nav-pills {
+					.mod-menu > li {
+						border-radius: var(--bs-nav-pills-border-radius, var(--bsbasic-radius-sm));
+						transition: background-color v.$transition-fast;
+
+						&:hover {
+							background: var(--bsbasic-nav-pill-hover);
+						}
+
+						&:is(.active, .current) {
+							--bsbasic-nav-fg: var(--bsbasic-nav-pill-fg);
+							--bsbasic-nav-fg-strong: var(--bsbasic-nav-pill-fg);
+							background: var(--bsbasic-nav-pill-bg);
+						}
+					}
+
+					#{$top-links} {
+						&::after {
+							display: none;
+						}
+					}
+				}
+
+				&.bsbasic-header--nav-underline {
+					#{$top-links} {
+						&::after {
+							bottom: 0;
+							height: var(--bs-nav-underline-border-width, .125rem);
+							background: currentColor;
+							transition: none;
+						}
+					}
+
+					.mod-menu > li:not(.active, .current) > :is(a, .mod-menu__heading) {
+						&:hover::after,
+						&:focus::after {
+							transform: scaleX(0);
+						}
+					}
+
+					.mod-menu > li:is(.active, .current) > :is(a, .mod-menu__heading),
+					.mod-menu > li:is(.active, .current) > .mod-menu__toggle-sub > .mod-menu__heading {
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+}

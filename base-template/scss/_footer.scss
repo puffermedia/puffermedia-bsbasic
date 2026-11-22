@@ -1,0 +1,88 @@
+// Footer — ink background with a thin accent rule on top. The --light,
+// --primary and --accent modifiers (Footer Color param) only swap the tokens below.
+
+.bsbasic-footer {
+	--bsbasic-footer-bg: var(--bsbasic-ink);
+	--bsbasic-footer-text: rgba(255, 255, 255, .72);
+	--bsbasic-footer-strong: #fff;
+	--bsbasic-footer-muted: rgba(255, 255, 255, .55);
+	--bsbasic-footer-rule: rgba(255, 255, 255, .14);
+	--bsbasic-footer-top: var(--bsbasic-accent);
+
+	background: var(--bsbasic-footer-bg);
+	border-top: 3px solid var(--bsbasic-footer-top);
+	color: var(--bsbasic-footer-text);
+	font-size: .95rem;
+
+	&--light {
+		--bsbasic-footer-bg: var(--bsbasic-surface);
+		--bsbasic-footer-text: var(--bsbasic-ink-soft);
+		--bsbasic-footer-strong: var(--bsbasic-ink);
+		--bsbasic-footer-muted: var(--bsbasic-muted);
+		--bsbasic-footer-rule: var(--bsbasic-rule);
+	}
+
+	&--primary {
+		--bsbasic-footer-bg: var(--bsbasic-primary);
+		--bsbasic-footer-text: rgba(255, 255, 255, .85);
+		--bsbasic-footer-muted: rgba(255, 255, 255, .7);
+		--bsbasic-footer-rule: rgba(255, 255, 255, .3);
+		--bsbasic-footer-top: var(--bsbasic-accent-dark);
+	}
+
+	&--accent {
+		--bsbasic-footer-bg: var(--bsbasic-accent);
+		--bsbasic-footer-text: rgba(255, 255, 255, .85);
+		--bsbasic-footer-muted: rgba(255, 255, 255, .7);
+		--bsbasic-footer-rule: rgba(255, 255, 255, .3);
+		--bsbasic-footer-top: var(--bsbasic-accent-dark);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: 1rem;
+		font-family: var(--bsbasic-body-font);
+		font-size: .78rem;
+		font-weight: 700;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+		color: var(--bsbasic-footer-strong);
+	}
+
+	a {
+		color: var(--bsbasic-footer-link, var(--bsbasic-footer-strong));
+		text-decoration: none;
+
+		&:hover {
+			color: var(--bsbasic-footer-strong);
+			text-decoration: underline;
+		}
+	}
+
+	ul {
+		padding-left: 0;
+		list-style: none;
+	}
+
+	li {
+		margin-bottom: .5rem;
+	}
+
+	// Modules render with style="xhtml" so each gets a .moduletable wrapper —
+	// gives consistent breathing room when the footer has more than one.
+	.moduletable {
+		margin-bottom: 1.75rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.bsbasic-copyright {
+	margin-top: 2rem !important;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--bsbasic-footer-rule);
+	font-size: .8rem;
+	letter-spacing: .03em;
+	color: var(--bsbasic-footer-muted);
+}

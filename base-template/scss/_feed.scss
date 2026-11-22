@@ -1,0 +1,45 @@
+@use "variables" as v;
+
+// mod_feed override — shared
+.bsbasic-feed__title a {
+	text-decoration: none;
+}
+
+// mod_feed override — "List" layout
+.bsbasic-feed--list {
+	.bsbasic-feed__item-thumb img {
+		width: v.$feed-list-thumb-width;
+		height: v.$feed-list-thumb-height;
+		object-fit: cover;
+		border-radius: var(--bsbasic-radius-sm);
+	}
+
+	.bsbasic-feed__item-title a {
+		text-decoration: none;
+	}
+}
+
+// mod_feed override — "Tiles" layout
+.bsbasic-feed--tiles {
+	.bsbasic-feed__tile {
+		transition: box-shadow v.$transition-fast, transform v.$transition-fast;
+		// Hover effect: see _animations.scss (Tile Hover Effect param)
+	}
+
+	.bsbasic-feed__tile-image {
+		display: block;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.card-title a {
+		text-decoration: none;
+		color: inherit;
+	}
+}

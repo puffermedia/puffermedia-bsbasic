@@ -1,0 +1,114 @@
+@use "variables" as v;
+
+// Tile hover effects (Tile Hover Effect param) and scroll-in entrance
+// animations (Entrance Animation param, driven by js/animate.js).
+
+// Tiles: mod_articles items and mod_feed "Tiles". index.php puts one of
+// bsbasic-hover-none / -lift / -zoom / -lift-zoom on <body>; lift is the default.
+.bsbasic-hover-lift,
+.bsbasic-hover-lift-zoom {
+	.mod-articles-item:hover {
+		box-shadow: var(--bsbasic-shadow-md);
+		transform: translateY(-2px);
+	}
+
+	.bsbasic-feed__tile:hover {
+		box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+		transform: translateY(-2px);
+	}
+}
+
+.bsbasic-hover-zoom,
+.bsbasic-hover-lift-zoom {
+	.mod-articles-image,
+	.bsbasic-feed__tile-image {
+		overflow: hidden;
+	}
+
+	.mod-articles-image img,
+	.bsbasic-feed__tile-image img {
+		transition: transform .4s ease;
+	}
+
+	.mod-articles-item:hover .mod-articles-image img,
+	.bsbasic-feed__tile:hover .bsbasic-feed__tile-image img {
+		transform: scale(1.05);
+	}
+}
+
+// Blog items (Blog Items param = Entrance and hover; body gets .bsbasic-blog-hover).
+// Lift only suits Boxed layouts, where an item is a bordered card; plain list
+// items are rows with a bottom rule. Zoom works on any intro image.
+// :where() keeps the transition at zero specificity so the entrance transition wins.
+:where(.bsbasic-blog-hover .blog-items.boxed > .blog-item) {
+	transition: box-shadow v.$transition-fast, transform v.$transition-fast;
+}
+
+.bsbasic-blog-hover {
+	&.bsbasic-hover-lift,
+	&.bsbasic-hover-lift-zoom {
+		.blog-items.boxed > .blog-item:hover {
+			box-shadow: var(--bsbasic-shadow-md);
+			transform: translateY(-2px);
+		}
+	}
+
+	&.bsbasic-hover-zoom,
+	&.bsbasic-hover-lift-zoom {
+		.blog-item .item-image img {
+			transition: transform .4s ease;
+		}
+
+		.blog-item:hover .item-image img {
+			transform: scale(1.05);
+		}
+	}
+}
+
+// Entrance animation. animate.js adds .bsbasic-anim-item (hidden start state)
+// and one effect class to each target, .is-visible when it scrolls into view,
+// and removes all three once the transition ends so hover effects work again.
+// Wrapped in :root so it beats the tiles' own, more specific transitions.
+@media (prefers-reduced-motion: no-preference) {
+	// Before animate.js runs, hide the targets from the first paint so those
+	// already in view animate on load instead of flashing visible first. Mirrors
+	// the selectors in animate.js. If the script never runs, the keyframes
+	// reveal everything after 2.5s.
+	:root.bsbasic-anim-pending {
+		&:not([data-bsbasic-anim-targets="sections"]) :is(
+			.bsbasic-reveal:not(.bsbasic-reveal--section),
+			.mod-articles-item,
+			.blog-items > .blog-item,
+			.com-content-article__body .card
+		),
+		&:not([data-bsbasic-anim-targets="cards"]) .bsbasic-reveal--section {
+			opacity: 0;
+			animation: bsbasic-anim-failsafe 0s 2.5s forwards;
+		}
+	}
+
+	@keyframes bsbasic-anim-failsafe {
+		to {
+			opacity: 1;
+		}
+	}
+
+	:root .bsbasic-anim-item {
+		opacity: 0;
+		transition: opacity var(--bsbasic-anim-dur, .6s) ease-out, transform var(--bsbasic-anim-dur, .6s) ease-out;
+		transition-delay: var(--bsbasic-anim-delay, 0s);
+
+		&.bsbasic-anim--slide-up {
+			transform: translateY(1.5rem);
+		}
+
+		&.bsbasic-anim--zoom-in {
+			transform: scale(.94);
+		}
+
+		&.is-visible {
+			opacity: 1;
+			transform: none;
+		}
+	}
+}

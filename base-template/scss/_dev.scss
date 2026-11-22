@@ -1,0 +1,17 @@
+// Breakpoint Indicator (Bootstrap tab, Developer). index.php renders it only
+// while System Debug is on. Bottom center, clear of Back-to-Top on either side.
+
+.bsbasic-bp {
+	position: fixed;
+	bottom: .5rem;
+	left: 50%;
+	z-index: 1090;
+	transform: translateX(-50%);
+	padding: .15rem .5rem;
+	font: 600 .75rem/1.4 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+	letter-spacing: .05em;
+	color: #fff;
+	background: rgba(0, 0, 0, .75);
+	border-radius: 999px;
+	pointer-events: none;
+}

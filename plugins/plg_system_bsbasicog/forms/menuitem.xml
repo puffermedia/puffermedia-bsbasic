@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="bsbasic-bootstrap" label="PLG_SYSTEM_BSBASICOG_BS_TAB">
+			<field
+				name="bsbasic_bs_components"
+				type="checkboxes"
+				label="PLG_SYSTEM_BSBASICOG_BS_COMPONENTS_LABEL"
+				description="PLG_SYSTEM_BSBASICOG_BS_COMPONENTS_DESC"
+			>
+				<option value="alert">PLG_SYSTEM_BSBASICOG_BS_ALERT</option>
+				<option value="carousel">PLG_SYSTEM_BSBASICOG_BS_CAROUSEL</option>
+				<option value="dropdown">PLG_SYSTEM_BSBASICOG_BS_DROPDOWN</option>
+				<option value="modal">PLG_SYSTEM_BSBASICOG_BS_MODAL</option>
+				<option value="offcanvas">PLG_SYSTEM_BSBASICOG_BS_OFFCANVAS</option>
+				<option value="popover">PLG_SYSTEM_BSBASICOG_BS_POPOVER</option>
+				<option value="scrollspy">PLG_SYSTEM_BSBASICOG_BS_SCROLLSPY</option>
+				<option value="tab">PLG_SYSTEM_BSBASICOG_BS_TAB_COMPONENT</option>
+				<option value="toast">PLG_SYSTEM_BSBASICOG_BS_TOAST</option>
+				<option value="tooltip">PLG_SYSTEM_BSBASICOG_BS_TOOLTIP</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

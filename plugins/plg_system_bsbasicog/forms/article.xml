@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="attribs">
+		<fieldset name="bsbasic-og" label="PLG_SYSTEM_BSBASICOG_TAB">
+			<field
+				name="bsbasic_og_title"
+				type="text"
+				label="PLG_SYSTEM_BSBASICOG_FIELD_TITLE_LABEL"
+				description="PLG_SYSTEM_BSBASICOG_FIELD_TITLE_DESC"
+				maxlength="95"
+			/>
+			<field
+				name="bsbasic_og_description"
+				type="textarea"
+				label="PLG_SYSTEM_BSBASICOG_FIELD_DESCRIPTION_LABEL"
+				description="PLG_SYSTEM_BSBASICOG_FIELD_DESCRIPTION_DESC"
+				rows="3"
+			/>
+			<field
+				name="bsbasic_og_image"
+				type="media"
+				label="PLG_SYSTEM_BSBASICOG_FIELD_IMAGE_LABEL"
+				description="PLG_SYSTEM_BSBASICOG_FIELD_IMAGE_DESC"
+			/>
+		</fieldset>
+	</fields>
+</form>

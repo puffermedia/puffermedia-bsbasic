@@ -1,0 +1,48 @@
+// Search module sits inline with the menu on desktop
+
+.bsbasic-search {
+	form,
+	.moduletable {
+		margin: 0;
+	}
+
+	input[type="text"],
+	input[type="search"] {
+		min-width: 12rem;
+		padding: .4rem .9rem;
+		font-size: .9rem;
+		background: var(--bsbasic-surface);
+		border: 1px solid var(--bsbasic-rule);
+		border-radius: 50rem;
+
+		&:focus {
+			background: #fff;
+		}
+	}
+
+	// Smart Search renders an input-group (input + button). Make the pair one
+	// pill: the input rounds only its start side and the button only its end
+	// side, so the input's radius never cuts into the button. Written as
+	// longhand with enough specificity to beat Bootstrap's input-group corners.
+	.input-group {
+		flex-wrap: nowrap;
+
+		input[type="text"],
+		input[type="search"] {
+			min-width: 12rem;
+			border-start-start-radius: 50rem;
+			border-end-start-radius: 50rem;
+			border-start-end-radius: 0;
+			border-end-end-radius: 0;
+		}
+
+		> .btn {
+			flex: 0 0 auto;
+			padding-inline: 1rem;
+			border-start-start-radius: 0;
+			border-end-start-radius: 0;
+			border-start-end-radius: 50rem;
+			border-end-end-radius: 50rem;
+		}
+	}
+}

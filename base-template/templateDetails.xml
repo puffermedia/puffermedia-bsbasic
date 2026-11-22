@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="template" client="site" method="upgrade">
+	<name>puffermedia-bsbasic</name>
+	<creationDate>June 2026</creationDate>
+	<author>PufferMedia</author>
+	<copyright>Copyright (C) 2026. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.6.1</version>
+	<description>TPL_BSBASIC_XML_DESCRIPTION</description>
+
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>index.php</filename>
+		<filename>joomla.asset.json</filename>
+		<filename>LICENSE.txt</filename>
+		<filename>templateDetails.xml</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>layouts</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_puffermedia-bsbasic.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_puffermedia-bsbasic.sys.ini</language>
+	</languages>
+
+	<!--
+		Positions below are deliberately identical to the core Cassiopeia
+		template (including the newer error-403 / error-404 positions), so
+		switching a site from Cassiopeia to this template keeps every
+		module's position assignment intact.
+	-->
+	<positions>
+		<position>topbar</position>
+		<position>below-top</position>
+		<position>menu</position>
+		<position>search</position>
+		<position>banner</position>
+		<position>top-a</position>
+		<position>top-b</position>
+		<position>main-top</position>
+		<position>main-bottom</position>
+		<position>breadcrumbs</position>
+		<position>sidebar-left</position>
+		<position>sidebar-right</position>
+		<position>bottom-a</position>
+		<position>bottom-b</position>
+		<position>footer</position>
+		<position>error-403</position>
+		<position>error-404</position>
+		<position>debug</position>
+	</positions>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="TPL_BSBASIC_FIELDSET_BASIC_LABEL">
+				<field
+					name="logoImage"
+					type="media"
+					label="TPL_BSBASIC_FIELD_LOGO_LABEL"
+					description="TPL_BSBASIC_FIELD_LOGO_DESC"
+				/>
+
+				<field
+					name="logoAlt"
+					type="text"
+					default=""
+					label="TPL_BSBASIC_FIELD_LOGOALT_LABEL"
+					description="TPL_BSBASIC_FIELD_LOGOALT_DESC"
+				/>
+
+				<field
+					name="tagline"
+					type="text"
+					default=""
+					label="TPL_BSBASIC_FIELD_TAGLINE_LABEL"
+					description="TPL_BSBASIC_FIELD_TAGLINE_DESC"
+				/>
+
+				<field
+					name="copyrightText"
+					type="text"
+					filter="raw"
+					default="© {year} {sitename}"
+					label="TPL_BSBASIC_FIELD_COPYRIGHT_LABEL"
+					description="TPL_BSBASIC_FIELD_COPYRIGHT_DESC"
+				/>
+			</fieldset>
+
+			<fieldset name="appearance" label="TPL_BSBASIC_FIELDSET_APPEARANCE_LABEL">
+				<fieldset name="appearance_colors" label="TPL_BSBASIC_FIELDSET_APPEARANCE_COLORS_LABEL">
+					<field
+						name="primaryColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_PRIMARY_LABEL"
+						description="TPL_BSBASIC_FIELD_PRIMARY_DESC"
+					/>
+
+					<field
+						name="accentColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_ACCENT_LABEL"
+						description="TPL_BSBASIC_FIELD_ACCENT_DESC"
+					/>
+
+					<field
+						name="linkColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_LINKCOLOR_LABEL"
+						description="TPL_BSBASIC_FIELD_LINKCOLOR_DESC"
+					/>
+
+					<field
+						name="bodyBgColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_BODYBG_LABEL"
+						description="TPL_BSBASIC_FIELD_BODYBG_DESC"
+					/>
+
+					<field
+						name="containerBgColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_CONTAINERBG_LABEL"
+						description="TPL_BSBASIC_FIELD_CONTAINERBG_DESC"
+					/>
+				</fieldset>
+
+				<fieldset name="appearance_bscolors" label="TPL_BSBASIC_FIELDSET_APPEARANCE_BSCOLORS_LABEL" description="TPL_BSBASIC_FIELDSET_APPEARANCE_BSCOLORS_DESC">
+					<field name="bsSecondary" type="color" default="" label="TPL_BSBASIC_FIELD_BSSECONDARY_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsSuccess" type="color" default="" label="TPL_BSBASIC_FIELD_BSSUCCESS_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsInfo" type="color" default="" label="TPL_BSBASIC_FIELD_BSINFO_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsWarning" type="color" default="" label="TPL_BSBASIC_FIELD_BSWARNING_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsDanger" type="color" default="" label="TPL_BSBASIC_FIELD_BSDANGER_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsLight" type="color" default="" label="TPL_BSBASIC_FIELD_BSLIGHT_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+					<field name="bsDark" type="color" default="" label="TPL_BSBASIC_FIELD_BSDARK_LABEL" description="TPL_BSBASIC_FIELD_BSCOLOR_DESC" />
+				</fieldset>
+
+				<fieldset name="appearance_typography" label="TPL_BSBASIC_FIELDSET_APPEARANCE_TYPOGRAPHY_LABEL">
+					<field
+						name="bodyFont"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_BODYFONT_LABEL"
+						description="TPL_BSBASIC_FIELD_BODYFONT_DESC"
+					>
+						<option value="default">TPL_BSBASIC_FONT_DEFAULT</option>
+						<option value="classic-sans">TPL_BSBASIC_FONT_CLASSIC_SANS</option>
+						<option value="humanist">TPL_BSBASIC_FONT_HUMANIST</option>
+						<option value="serif">TPL_BSBASIC_FONT_SERIF</option>
+						<option value="monospace">TPL_BSBASIC_FONT_MONOSPACE</option>
+					</field>
+
+					<field
+						name="headingFont"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_HEADINGFONT_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADINGFONT_DESC"
+					>
+						<option value="default">TPL_BSBASIC_FONT_DEFAULT</option>
+						<option value="classic-sans">TPL_BSBASIC_FONT_CLASSIC_SANS</option>
+						<option value="humanist">TPL_BSBASIC_FONT_HUMANIST</option>
+						<option value="serif">TPL_BSBASIC_FONT_SERIF</option>
+						<option value="monospace">TPL_BSBASIC_FONT_MONOSPACE</option>
+					</field>
+
+					<field
+						name="headingColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_HEADINGCOLOR_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADINGCOLOR_DESC"
+					/>
+				</fieldset>
+
+				<fieldset name="appearance_shape" label="TPL_BSBASIC_FIELDSET_APPEARANCE_SHAPE_LABEL">
+					<field
+						name="borderRadius"
+						type="list"
+						default="soft"
+						label="TPL_BSBASIC_FIELD_RADIUS_LABEL"
+						description="TPL_BSBASIC_FIELD_RADIUS_DESC"
+					>
+						<option value="square">TPL_BSBASIC_RADIUS_SQUARE</option>
+						<option value="soft">TPL_BSBASIC_RADIUS_SOFT</option>
+						<option value="round">TPL_BSBASIC_RADIUS_ROUND</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="appearance_animation" label="TPL_BSBASIC_FIELDSET_APPEARANCE_ANIMATION_LABEL">
+					<field
+						name="animHover"
+						type="list"
+						default="lift"
+						label="TPL_BSBASIC_FIELD_ANIMHOVER_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMHOVER_DESC"
+					>
+						<option value="none">TPL_BSBASIC_ANIMHOVER_NONE</option>
+						<option value="lift">TPL_BSBASIC_ANIMHOVER_LIFT</option>
+						<option value="zoom">TPL_BSBASIC_ANIMHOVER_ZOOM</option>
+						<option value="lift-zoom">TPL_BSBASIC_ANIMHOVER_LIFTZOOM</option>
+					</field>
+
+					<field
+						name="animEntrance"
+						type="list"
+						default="none"
+						label="TPL_BSBASIC_FIELD_ANIMENTRANCE_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMENTRANCE_DESC"
+					>
+						<option value="none">TPL_BSBASIC_ANIMENTRANCE_NONE</option>
+						<option value="fade">TPL_BSBASIC_ANIMENTRANCE_FADE</option>
+						<option value="slide-up">TPL_BSBASIC_ANIMENTRANCE_SLIDEUP</option>
+						<option value="zoom-in">TPL_BSBASIC_ANIMENTRANCE_ZOOMIN</option>
+					</field>
+
+					<field
+						name="animTargets"
+						type="list"
+						default="both"
+						showon="animEntrance:fade,slide-up,zoom-in"
+						label="TPL_BSBASIC_FIELD_ANIMTARGETS_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMTARGETS_DESC"
+					>
+						<option value="both">TPL_BSBASIC_ANIMTARGETS_BOTH</option>
+						<option value="cards">TPL_BSBASIC_ANIMTARGETS_CARDS</option>
+						<option value="sections">TPL_BSBASIC_ANIMTARGETS_SECTIONS</option>
+					</field>
+
+					<field
+						name="animBlog"
+						type="list"
+						default="entrance"
+						label="TPL_BSBASIC_FIELD_ANIMBLOG_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMBLOG_DESC"
+					>
+						<option value="entrance">TPL_BSBASIC_ANIMBLOG_ENTRANCE</option>
+						<option value="entrance-hover">TPL_BSBASIC_ANIMBLOG_ENTRANCEHOVER</option>
+					</field>
+
+					<field
+						name="animSpeed"
+						type="range"
+						default="600"
+						min="200"
+						max="2000"
+						step="50"
+						layout="bsbasic.range-ms"
+						layoutIncludePath="templates/puffermedia-bsbasic/layouts"
+						showon="animEntrance:fade,slide-up,zoom-in"
+						label="TPL_BSBASIC_FIELD_ANIMSPEED_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMSPEED_DESC"
+					/>
+
+					<field
+						name="animStagger"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="1"
+						showon="animEntrance:fade,slide-up,zoom-in"
+						label="TPL_BSBASIC_FIELD_ANIMSTAGGER_LABEL"
+						description="TPL_BSBASIC_FIELD_ANIMSTAGGER_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+				</fieldset>
+			</fieldset>
+
+			<fieldset name="headerfooter" label="TPL_BSBASIC_FIELDSET_HEADERFOOTER_LABEL">
+				<fieldset name="hf_header" label="TPL_BSBASIC_FIELDSET_HF_HEADER_LABEL">
+					<field
+						name="headerScheme"
+						type="list"
+						default="light"
+						label="TPL_BSBASIC_FIELD_HEADERCOLOR_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADERCOLOR_DESC"
+					>
+						<option value="light">TPL_BSBASIC_SCHEME_LIGHT</option>
+						<option value="dark">TPL_BSBASIC_SCHEME_DARK</option>
+						<option value="primary">TPL_BSBASIC_SCHEME_PRIMARY</option>
+						<option value="accent">TPL_BSBASIC_SCHEME_ACCENT</option>
+					</field>
+
+					<field
+						name="headerLinkColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_HEADERLINK_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADERLINK_DESC"
+					/>
+
+					<field
+						name="headerSpacing"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_HEADERSPACING_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADERSPACING_DESC"
+					>
+						<option value="compact">TPL_BSBASIC_HEADERSPACING_COMPACT</option>
+						<option value="default">TPL_BSBASIC_HEADERSPACING_DEFAULT</option>
+						<option value="roomy">TPL_BSBASIC_HEADERSPACING_ROOMY</option>
+					</field>
+
+					<field
+						name="headerShadow"
+						type="list"
+						default="subtle"
+						label="TPL_BSBASIC_FIELD_HEADERSHADOW_LABEL"
+						description="TPL_BSBASIC_FIELD_HEADERSHADOW_DESC"
+					>
+						<option value="none">TPL_BSBASIC_HEADERSHADOW_NONE</option>
+						<option value="subtle">TPL_BSBASIC_HEADERSHADOW_SUBTLE</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="hf_menu" label="TPL_BSBASIC_FIELDSET_HF_MENU_LABEL">
+					<field
+						name="collapseBreakpoint"
+						type="list"
+						default="lg"
+						label="TPL_BSBASIC_FIELD_COLLAPSEBREAKPOINT_LABEL"
+						description="TPL_BSBASIC_FIELD_COLLAPSEBREAKPOINT_DESC"
+					>
+						<option value="md">TPL_BSBASIC_COLLAPSEBREAKPOINT_MD</option>
+						<option value="lg">TPL_BSBASIC_COLLAPSEBREAKPOINT_LG</option>
+						<option value="xl">TPL_BSBASIC_COLLAPSEBREAKPOINT_XL</option>
+					</field>
+
+					<field
+						name="menuAlign"
+						type="list"
+						default="end"
+						label="TPL_BSBASIC_FIELD_MENUALIGN_LABEL"
+						description="TPL_BSBASIC_FIELD_MENUALIGN_DESC"
+					>
+						<option value="end">TPL_BSBASIC_MENUALIGN_END</option>
+						<option value="center">TPL_BSBASIC_MENUALIGN_CENTER</option>
+						<option value="start">TPL_BSBASIC_MENUALIGN_START</option>
+					</field>
+
+					<field
+						name="menuStyle"
+						type="list"
+						default="template"
+						label="TPL_BSBASIC_FIELD_MENUSTYLE_LABEL"
+						description="TPL_BSBASIC_FIELD_MENUSTYLE_DESC"
+					>
+						<option value="template">TPL_BSBASIC_MENUSTYLE_TEMPLATE</option>
+						<option value="pills">TPL_BSBASIC_MENUSTYLE_PILLS</option>
+						<option value="underline">TPL_BSBASIC_MENUSTYLE_UNDERLINE</option>
+					</field>
+
+					<field
+						name="mobileMenu"
+						type="list"
+						default="collapse"
+						label="TPL_BSBASIC_FIELD_MOBILEMENU_LABEL"
+						description="TPL_BSBASIC_FIELD_MOBILEMENU_DESC"
+					>
+						<option value="collapse">TPL_BSBASIC_MOBILEMENU_COLLAPSE</option>
+						<option value="offcanvas-end">TPL_BSBASIC_MOBILEMENU_OFFCANVAS_END</option>
+						<option value="offcanvas-start">TPL_BSBASIC_MOBILEMENU_OFFCANVAS_START</option>
+					</field>
+
+					<field
+						name="stickyHeader"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_STICKYHEADER_LABEL"
+						description="TPL_BSBASIC_FIELD_STICKYHEADER_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+
+					<field
+						name="stickyBehavior"
+						type="list"
+						default="fixed"
+						showon="stickyHeader:1"
+						label="TPL_BSBASIC_FIELD_STICKYBEHAVIOR_LABEL"
+						description="TPL_BSBASIC_FIELD_STICKYBEHAVIOR_DESC"
+					>
+						<option value="fixed">TPL_BSBASIC_STICKY_FIXED</option>
+						<option value="shrink">TPL_BSBASIC_STICKY_SHRINK</option>
+						<option value="autohide">TPL_BSBASIC_STICKY_AUTOHIDE</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="hf_footer" label="TPL_BSBASIC_FIELDSET_HF_FOOTER_LABEL">
+					<field
+						name="footerColor"
+						type="list"
+						default="dark"
+						label="TPL_BSBASIC_FIELD_FOOTERCOLOR_LABEL"
+						description="TPL_BSBASIC_FIELD_FOOTERCOLOR_DESC"
+					>
+						<option value="dark">TPL_BSBASIC_SCHEME_DARK</option>
+						<option value="light">TPL_BSBASIC_SCHEME_LIGHT</option>
+						<option value="primary">TPL_BSBASIC_SCHEME_PRIMARY</option>
+						<option value="accent">TPL_BSBASIC_SCHEME_ACCENT</option>
+					</field>
+
+					<field
+						name="footerLinkColor"
+						type="color"
+						default=""
+						label="TPL_BSBASIC_FIELD_FOOTERLINK_LABEL"
+						description="TPL_BSBASIC_FIELD_FOOTERLINK_DESC"
+					/>
+				</fieldset>
+			</fieldset>
+
+			<fieldset name="layout" label="TPL_BSBASIC_FIELDSET_LAYOUT_LABEL">
+				<fieldset name="layout_page" label="TPL_BSBASIC_FIELDSET_LAYOUT_PAGE_LABEL">
+					<field
+						name="layoutWidth"
+						type="list"
+						default="fluid"
+						label="TPL_BSBASIC_FIELD_LAYOUTWIDTH_LABEL"
+						description="TPL_BSBASIC_FIELD_LAYOUTWIDTH_DESC"
+					>
+						<option value="fluid">TPL_BSBASIC_FIELD_LAYOUTWIDTH_FLUID</option>
+						<option value="boxed">TPL_BSBASIC_FIELD_LAYOUTWIDTH_BOXED</option>
+					</field>
+
+					<field
+						name="boxedMaxWidth"
+						type="list"
+						default="1320"
+						showon="layoutWidth:boxed"
+						label="TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_LABEL"
+						description="TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_DESC"
+					>
+						<option value="1140">TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_1140</option>
+						<option value="1320">TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_1320</option>
+						<option value="1440">TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_1440</option>
+						<option value="1600">TPL_BSBASIC_FIELD_BOXEDMAXWIDTH_1600</option>
+					</field>
+
+					<field
+						name="boxedFrom"
+						type="list"
+						default="container"
+						showon="layoutWidth:boxed"
+						label="TPL_BSBASIC_FIELD_BOXEDFROM_LABEL"
+						description="TPL_BSBASIC_FIELD_BOXEDFROM_DESC"
+					>
+						<option value="container">TPL_BSBASIC_BOXEDFROM_ALL</option>
+						<option value="container-md">TPL_BSBASIC_BOXEDFROM_MD</option>
+						<option value="container-lg">TPL_BSBASIC_BOXEDFROM_LG</option>
+						<option value="container-xl">TPL_BSBASIC_BOXEDFROM_XL</option>
+						<option value="container-xxl">TPL_BSBASIC_BOXEDFROM_XXL</option>
+					</field>
+
+					<field
+						name="bandWidth"
+						type="list"
+						default="contained"
+						showon="layoutWidth:boxed"
+						label="TPL_BSBASIC_FIELD_BANDWIDTH_LABEL"
+						description="TPL_BSBASIC_FIELD_BANDWIDTH_DESC"
+					>
+						<option value="contained">TPL_BSBASIC_BANDWIDTH_CONTAINED</option>
+						<option value="full">TPL_BSBASIC_BANDWIDTH_FULL</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="layout_content" label="TPL_BSBASIC_FIELDSET_LAYOUT_CONTENT_LABEL">
+					<field
+						name="readingWidth"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_READINGWIDTH_LABEL"
+						description="TPL_BSBASIC_FIELD_READINGWIDTH_DESC"
+					>
+						<option value="narrow">TPL_BSBASIC_READINGWIDTH_NARROW</option>
+						<option value="default">TPL_BSBASIC_READINGWIDTH_DEFAULT</option>
+						<option value="wide">TPL_BSBASIC_READINGWIDTH_WIDE</option>
+						<option value="xwide">TPL_BSBASIC_READINGWIDTH_XWIDE</option>
+					</field>
+
+					<field
+						name="sidebarWidth"
+						type="list"
+						default="3"
+						label="TPL_BSBASIC_FIELD_SIDEBARWIDTH_LABEL"
+						description="TPL_BSBASIC_FIELD_SIDEBARWIDTH_DESC"
+					>
+						<option value="2">TPL_BSBASIC_SIDEBARWIDTH_2</option>
+						<option value="3">TPL_BSBASIC_SIDEBARWIDTH_3</option>
+						<option value="4">TPL_BSBASIC_SIDEBARWIDTH_4</option>
+					</field>
+
+					<field
+						name="sidebarStack"
+						type="list"
+						default="lg"
+						label="TPL_BSBASIC_FIELD_SIDEBARSTACK_LABEL"
+						description="TPL_BSBASIC_FIELD_SIDEBARSTACK_DESC"
+					>
+						<option value="md">TPL_BSBASIC_BREAKPOINT_MD</option>
+						<option value="lg">TPL_BSBASIC_BREAKPOINT_LG</option>
+						<option value="xl">TPL_BSBASIC_BREAKPOINT_XL</option>
+					</field>
+
+					<field
+						name="contentFirst"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_CONTENTFIRST_LABEL"
+						description="TPL_BSBASIC_FIELD_CONTENTFIRST_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+
+					<field
+						name="gridGutter"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_GRIDGUTTER_LABEL"
+						description="TPL_BSBASIC_FIELD_GRIDGUTTER_DESC"
+					>
+						<option value="default">TPL_BSBASIC_GRIDGUTTER_DEFAULT</option>
+						<option value="0">TPL_BSBASIC_GRIDGUTTER_0</option>
+						<option value="1">TPL_BSBASIC_GRIDGUTTER_1</option>
+						<option value="2">TPL_BSBASIC_GRIDGUTTER_2</option>
+						<option value="3">TPL_BSBASIC_GRIDGUTTER_3</option>
+						<option value="4">TPL_BSBASIC_GRIDGUTTER_4</option>
+						<option value="5">TPL_BSBASIC_GRIDGUTTER_5</option>
+					</field>
+
+					<field
+						name="sidebarMenu"
+						type="list"
+						default="standard"
+						label="TPL_BSBASIC_FIELD_SIDEBARMENU_LABEL"
+						description="TPL_BSBASIC_FIELD_SIDEBARMENU_DESC"
+					>
+						<option value="standard">TPL_BSBASIC_SIDEBARMENU_STANDARD</option>
+						<option value="collapsible">TPL_BSBASIC_SIDEBARMENU_COLLAPSIBLE</option>
+					</field>
+
+					<field
+						name="sidebarDividers"
+						type="list"
+						default="off"
+						label="TPL_BSBASIC_FIELD_SIDEBARDIVIDERS_LABEL"
+						description="TPL_BSBASIC_FIELD_SIDEBARDIVIDERS_DESC"
+					>
+						<option value="off">TPL_BSBASIC_SIDEBARDIVIDERS_OFF</option>
+						<option value="on">TPL_BSBASIC_SIDEBARDIVIDERS_ON</option>
+					</field>
+
+					<field
+						name="contentIndent"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_INDENT_LABEL"
+						description="TPL_BSBASIC_FIELD_INDENT_DESC"
+						showon="layoutWidth:fluid"
+					>
+						<option value="none">TPL_BSBASIC_INDENT_NONE</option>
+						<option value="small">TPL_BSBASIC_INDENT_SMALL</option>
+						<option value="default">TPL_BSBASIC_INDENT_DEFAULT</option>
+						<option value="large">TPL_BSBASIC_INDENT_LARGE</option>
+					</field>
+
+					<field
+						name="containerPadding"
+						type="list"
+						default="default"
+						label="TPL_BSBASIC_FIELD_CONTAINERPAD_LABEL"
+						description="TPL_BSBASIC_FIELD_CONTAINERPAD_DESC"
+					>
+						<option value="none">TPL_BSBASIC_CONTAINERPAD_NONE</option>
+						<option value="default">TPL_BSBASIC_CONTAINERPAD_DEFAULT</option>
+						<option value="small">TPL_BSBASIC_CONTAINERPAD_SMALL</option>
+						<option value="large">TPL_BSBASIC_CONTAINERPAD_LARGE</option>
+					</field>
+				</fieldset>
+			</fieldset>
+
+			<fieldset name="bootstrap" label="TPL_BSBASIC_FIELDSET_BOOTSTRAP_LABEL">
+				<fieldset name="bs_classes" label="TPL_BSBASIC_FIELDSET_BS_CLASSES_LABEL" description="TPL_BSBASIC_FIELDSET_BS_CLASSES_DESC">
+					<field name="clsBody" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSBODY_LABEL" description="TPL_BSBASIC_FIELD_CLSBODY_DESC" />
+					<field name="clsHeader" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSHEADER_LABEL" description="TPL_BSBASIC_FIELD_CLSHEADER_DESC" />
+					<field name="clsNavbar" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSNAVBAR_LABEL" description="TPL_BSBASIC_FIELD_CLSNAVBAR_DESC" />
+					<field name="clsMainArea" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSMAINAREA_LABEL" description="TPL_BSBASIC_FIELD_CLSMAINAREA_DESC" />
+					<field name="clsMain" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSMAIN_LABEL" description="TPL_BSBASIC_FIELD_CLSMAIN_DESC" />
+					<field name="clsSidebar" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSSIDEBAR_LABEL" description="TPL_BSBASIC_FIELD_CLSSIDEBAR_DESC" />
+					<field name="clsBottom" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSBOTTOM_LABEL" description="TPL_BSBASIC_FIELD_CLSBOTTOM_DESC" />
+					<field name="clsFooter" type="text" default="" hint="TPL_BSBASIC_CLS_HINT" label="TPL_BSBASIC_FIELD_CLSFOOTER_LABEL" description="TPL_BSBASIC_FIELD_CLSFOOTER_DESC" />
+				</fieldset>
+
+				<fieldset name="bs_variants" label="TPL_BSBASIC_FIELDSET_BS_VARIANTS_LABEL">
+					<field
+						name="tableVariants"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_TABLEVARIANTS_LABEL"
+						description="TPL_BSBASIC_FIELD_TABLEVARIANTS_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+
+					<field
+						name="listGroupVariants"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="1"
+						label="TPL_BSBASIC_FIELD_LISTGROUPVARIANTS_LABEL"
+						description="TPL_BSBASIC_FIELD_LISTGROUPVARIANTS_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="bs_js" label="TPL_BSBASIC_FIELDSET_BS_JS_LABEL">
+					<field
+						name="bsComponents"
+						type="checkboxes"
+						multiple="true"
+						default=""
+						label="TPL_BSBASIC_FIELD_BSCOMPONENTS_LABEL"
+						description="TPL_BSBASIC_FIELD_BSCOMPONENTS_DESC"
+					>
+						<option value="alert">TPL_BSBASIC_BSCOMP_ALERT</option>
+						<option value="carousel">TPL_BSBASIC_BSCOMP_CAROUSEL</option>
+						<option value="dropdown">TPL_BSBASIC_BSCOMP_DROPDOWN</option>
+						<option value="modal">TPL_BSBASIC_BSCOMP_MODAL</option>
+						<option value="offcanvas">TPL_BSBASIC_BSCOMP_OFFCANVAS</option>
+						<option value="popover">TPL_BSBASIC_BSCOMP_POPOVER</option>
+						<option value="scrollspy">TPL_BSBASIC_BSCOMP_SCROLLSPY</option>
+						<option value="tab">TPL_BSBASIC_BSCOMP_TAB</option>
+						<option value="toast">TPL_BSBASIC_BSCOMP_TOAST</option>
+						<option value="tooltip">TPL_BSBASIC_BSCOMP_TOOLTIP</option>
+					</field>
+
+					<field
+						name="fontAwesome"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_FONTAWESOME_LABEL"
+						description="TPL_BSBASIC_FIELD_FONTAWESOME_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="bs_dev" label="TPL_BSBASIC_FIELDSET_BS_DEV_LABEL">
+					<field
+						name="bpIndicator"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_BPINDICATOR_LABEL"
+						description="TPL_BSBASIC_FIELD_BPINDICATOR_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+				</fieldset>
+			</fieldset>
+
+			<fieldset name="advanced" label="TPL_BSBASIC_FIELDSET_ADVANCED_LABEL">
+				<fieldset name="adv_backtotop" label="TPL_BSBASIC_FIELDSET_ADV_BACKTOTOP_LABEL">
+					<field
+						name="backToTop"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="1"
+						label="TPL_BSBASIC_FIELD_BACKTOTOP_LABEL"
+						description="TPL_BSBASIC_FIELD_BACKTOTOP_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+
+					<field
+						name="backToTopPosition"
+						type="list"
+						default="right"
+						showon="backToTop:1"
+						label="TPL_BSBASIC_FIELD_BACKTOTOPPOSITION_LABEL"
+						description="TPL_BSBASIC_FIELD_BACKTOTOPPOSITION_DESC"
+					>
+						<option value="right">TPL_BSBASIC_BTTPOS_RIGHT</option>
+						<option value="left">TPL_BSBASIC_BTTPOS_LEFT</option>
+					</field>
+
+					<field
+						name="backToTopThreshold"
+						type="list"
+						default="300"
+						showon="backToTop:1"
+						label="TPL_BSBASIC_FIELD_BACKTOTOPTHRESHOLD_LABEL"
+						description="TPL_BSBASIC_FIELD_BACKTOTOPTHRESHOLD_DESC"
+					>
+						<option value="100">TPL_BSBASIC_BTTTHRESHOLD_100</option>
+						<option value="300">TPL_BSBASIC_BTTTHRESHOLD_300</option>
+						<option value="600">TPL_BSBASIC_BTTTHRESHOLD_600</option>
+						<option value="1000">TPL_BSBASIC_BTTTHRESHOLD_1000</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="adv_site" label="TPL_BSBASIC_FIELDSET_ADV_SITE_LABEL">
+					<field
+						name="favicon"
+						type="media"
+						default=""
+						label="TPL_BSBASIC_FIELD_FAVICON_LABEL"
+						description="TPL_BSBASIC_FIELD_FAVICON_DESC"
+					/>
+
+					<field
+						name="themeColor"
+						type="list"
+						default="none"
+						label="TPL_BSBASIC_FIELD_THEMECOLOR_LABEL"
+						description="TPL_BSBASIC_FIELD_THEMECOLOR_DESC"
+					>
+						<option value="none">TPL_BSBASIC_THEMECOLOR_NONE</option>
+						<option value="primary">TPL_BSBASIC_THEMECOLOR_PRIMARY</option>
+						<option value="accent">TPL_BSBASIC_THEMECOLOR_ACCENT</option>
+						<option value="custom">TPL_BSBASIC_THEMECOLOR_CUSTOM</option>
+					</field>
+
+					<field
+						name="themeColorCustom"
+						type="color"
+						default=""
+						showon="themeColor:custom"
+						label="TPL_BSBASIC_FIELD_THEMECOLORCUSTOM_LABEL"
+						description="TPL_BSBASIC_FIELD_THEMECOLORCUSTOM_DESC"
+					/>
+
+					<field
+						name="socialTags"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						label="TPL_BSBASIC_FIELD_SOCIALTAGS_LABEL"
+						description="TPL_BSBASIC_FIELD_SOCIALTAGS_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+
+					<field
+						name="socialImage"
+						type="media"
+						default=""
+						showon="socialTags:1"
+						label="TPL_BSBASIC_FIELD_SOCIALIMAGE_LABEL"
+						description="TPL_BSBASIC_FIELD_SOCIALIMAGE_DESC"
+					/>
+
+					<field
+						name="twitterCard"
+						type="radio"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+						showon="socialTags:1"
+						label="TPL_BSBASIC_FIELD_TWITTERCARD_LABEL"
+						description="TPL_BSBASIC_FIELD_TWITTERCARD_DESC"
+					>
+						<option value="0">JNO</option>
+						<option value="1">JYES</option>
+					</field>
+				</fieldset>
+
+				<fieldset name="adv_code" label="TPL_BSBASIC_FIELDSET_ADV_CODE_LABEL">
+					<field
+						name="customCss"
+						type="textarea"
+						filter="raw"
+						rows="8"
+						cols="40"
+						default=""
+						label="TPL_BSBASIC_FIELD_CUSTOMCSS_LABEL"
+						description="TPL_BSBASIC_FIELD_CUSTOMCSS_DESC"
+					/>
+
+					<field
+						name="customCodeHead"
+						type="textarea"
+						filter="raw"
+						rows="6"
+						cols="40"
+						default=""
+						label="TPL_BSBASIC_FIELD_CUSTOMHEAD_LABEL"
+						description="TPL_BSBASIC_FIELD_CUSTOMHEAD_DESC"
+					/>
+
+					<field
+						name="customCodeBodyEnd"
+						type="textarea"
+						filter="raw"
+						rows="6"
+						cols="40"
+						default=""
+						label="TPL_BSBASIC_FIELD_CUSTOMBODYEND_LABEL"
+						description="TPL_BSBASIC_FIELD_CUSTOMBODYEND_DESC"
+					/>
+				</fieldset>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

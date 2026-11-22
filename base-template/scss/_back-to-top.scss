@@ -1,0 +1,32 @@
+@use "variables" as v;
+
+.bsbasic-back-to-top {
+	position: fixed;
+	right: v.$back-to-top-offset;
+	bottom: v.$back-to-top-offset;
+	width: v.$back-to-top-size;
+	height: v.$back-to-top-size;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+	line-height: 1;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(10px);
+	transition: opacity v.$transition-base, transform v.$transition-base, visibility v.$transition-base;
+	z-index: 1040;
+	text-decoration: none;
+
+	// Back-to-Top Position: left.
+	&--left {
+		right: auto;
+		left: v.$back-to-top-offset;
+	}
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+}

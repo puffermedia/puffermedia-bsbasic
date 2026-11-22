@@ -1,0 +1,38 @@
+// Design tokens for the bsbasic template.
+//
+// Accent color and font choices are set per-site via the template's admin
+// params (see index.php), which override the CSS custom properties emitted
+// in _base.scss. The values below are the defaults used when a param is
+// left blank.
+
+// Palette ("modern editorial": ink on paper, one restrained accent)
+$ink:            #16181d;
+$ink-soft:       #3b4049;
+$muted:          #656c78;
+$rule:           #e3e5e9;
+$paper:          #ffffff;
+$surface:        #f6f7f9;
+$accent:         #ff0000;
+$accent-dark:    #cc0000;
+
+// Typography (system stacks only — no external font requests)
+$font-sans:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-serif:     Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+
+// Layout
+$reading-width:  46rem;
+$radius:         .5rem;
+$nav-breakpoint: 991.98px; // table scroll cut-off; the header uses the Collapse Breakpoint param
+
+// Elevation — subtle, restrained shadows (not heavy drop-shadows)
+$shadow-sm: 0 1px 2px rgba(22, 24, 29, .04), 0 2px 6px rgba(22, 24, 29, .06);
+$shadow-md: 0 10px 24px -18px rgba(22, 24, 29, .35);
+
+// Existing tokens
+$back-to-top-size: 2.75rem;
+$back-to-top-offset: 1.5rem;
+$transition-fast: .15s ease;
+$transition-base: .2s ease;
+
+$feed-list-thumb-width: 96px;
+$feed-list-thumb-height: 72px;

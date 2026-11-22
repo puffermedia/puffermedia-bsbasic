@@ -1,0 +1,18 @@
+# Downloaded standalone Dart Sass binary — fetch with scripts/install-dart-sass.sh
+/tools/
+
+# Packaged Joomla installer zips — regenerate with scripts/package-template.sh
+/dist/
+
+# Compiled CSS is committed on purpose (so the template works even if
+# nobody has run a build), but source maps are dev-only noise in diffs.
+*.css.map
+
+# Optional site-side override file (loaded after template.css if present).
+# Never committed or packaged; it belongs to the installed site.
+user.css
+
+.DS_Store
+
+# Claude Code settings
+/.claude/
