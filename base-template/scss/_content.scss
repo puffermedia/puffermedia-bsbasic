@@ -107,7 +107,7 @@
 		font-weight: 500;
 		letter-spacing: .07em;
 		text-transform: uppercase;
-		color: var(--bsbasic-muted);
+		color: var(--bsbasic-text-muted);
 
 		// "Details" label is for screen readers only
 		dt {
@@ -141,7 +141,7 @@
 	[itemprop="articleBody"] {
 		font-size: 1.125rem;
 		line-height: 1.75;
-		color: var(--bsbasic-ink-soft);
+		color: var(--bsbasic-text-soft);
 
 		> * + * {
 			margin-top: 1.25rem;
@@ -151,7 +151,12 @@
 		h3,
 		h4 {
 			margin-top: 2.25rem;
-			color: var(--bsbasic-heading-color);
+		}
+
+		@for $i from 2 through 4 {
+			h#{$i} {
+				color: var(--bsbasic-h#{$i}-color, var(--bsbasic-heading-color));
+			}
 		}
 
 		img {
@@ -184,7 +189,7 @@
 			border-radius: .25rem;
 			background: var(--bsbasic-surface);
 			font-size: .88em;
-			color: var(--bsbasic-ink);
+			color: var(--bsbasic-text);
 		}
 
 		pre {
@@ -210,7 +215,7 @@
 		.caption {
 			margin-top: .5rem;
 			font-size: .85rem;
-			color: var(--bsbasic-muted);
+			color: var(--bsbasic-text-muted);
 		}
 	}
 
@@ -222,7 +227,7 @@
 		font-size: 1.3rem;
 		font-style: italic;
 		line-height: 1.5;
-		color: var(--bsbasic-ink);
+		color: var(--bsbasic-text);
 	}
 
 	hr {
@@ -250,7 +255,7 @@
 			font-size: .78rem;
 			letter-spacing: .06em;
 			text-transform: uppercase;
-			color: var(--bsbasic-muted);
+			color: var(--bsbasic-text-muted);
 		}
 
 		tbody tr:hover {
@@ -311,7 +316,7 @@
 			font-size: 1.6rem;
 
 			a {
-				color: var(--bsbasic-heading-color);
+				color: var(--bsbasic-h2-color, var(--bsbasic-heading-color));
 				text-decoration: none;
 
 				&:hover {
@@ -516,7 +521,7 @@
 		border-radius: 999px;
 		font-size: .8rem;
 		text-decoration: none;
-		color: var(--bsbasic-ink-soft);
+		color: var(--bsbasic-text-soft);
 		transition: border-color v.$transition-fast, color v.$transition-fast;
 
 		&:hover {

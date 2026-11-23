@@ -10,7 +10,11 @@
 	// Primary falls back to the accent until a Primary Color is set.
 	--bsbasic-primary: var(--bsbasic-accent);
 	--bsbasic-ink: #{v.$ink};
-	--bsbasic-heading-color: var(--bsbasic-ink);
+	// Text colours for page content; index.php overrides them from the Typography params.
+	--bsbasic-text: var(--bsbasic-ink);
+	--bsbasic-text-soft: var(--bsbasic-ink-soft);
+	--bsbasic-text-muted: var(--bsbasic-muted);
+	--bsbasic-heading-color: var(--bsbasic-text);
 	--bsbasic-ink-soft: #{v.$ink-soft};
 	--bsbasic-muted: #{v.$muted};
 	--bsbasic-rule: #{v.$rule};
@@ -28,7 +32,7 @@
 	--bsbasic-body-font: #{v.$font-sans};
 	--bsbasic-heading-font: #{v.$font-serif};
 
-	--bs-body-color: var(--bsbasic-ink);
+	--bs-body-color: var(--bsbasic-text);
 	--bs-body-bg: var(--bsbasic-paper);
 	--bs-body-font-family: var(--bsbasic-body-font);
 	--bs-primary: var(--bsbasic-primary);
@@ -45,7 +49,7 @@
 body {
 	background: var(--bsbasic-paper);
 	font-family: var(--bsbasic-body-font);
-	color: var(--bsbasic-ink);
+	color: var(--bsbasic-text);
 	line-height: 1.65;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
@@ -57,7 +61,13 @@ h1, h2, h3, h4, h5, h6,
 	font-weight: 700;
 	line-height: 1.2;
 	letter-spacing: -.015em;
-	color: var(--bsbasic-heading-color);
+}
+
+// Per-level colour (--bsbasic-h1-color … h6, set by index.php), else Title Font Color.
+@for $i from 1 through 6 {
+	h#{$i}, .h#{$i} {
+		color: var(--bsbasic-h#{$i}-color, var(--bsbasic-heading-color));
+	}
 }
 
 a {
@@ -145,7 +155,7 @@ a {
 label {
 	font-size: .9rem;
 	font-weight: 600;
-	color: var(--bsbasic-ink-soft);
+	color: var(--bsbasic-text-soft);
 }
 
 .alert {

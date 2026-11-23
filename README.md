@@ -122,8 +122,12 @@ Sections: Colors, Bootstrap Theme Colors, Typography, Shape, Animation.
 | Container Background Color | — | One colour behind the main content area (top-a through bottom-b, including sidebars), with the Body Background showing around it. Most visible with a Boxed layout |
 | Bootstrap Theme Colors | Bootstrap's | Secondary, Success, Info, Warning, Danger, Light, Dark. Each colour set emits the full `--bs-*` set plus the button, outline, `.text-bg-*` and link rules Bootstrap hard-codes, with hover shades computed the way Bootstrap does |
 | Body Font | system sans | Default, Classic Sans (Helvetica/Arial), Humanist (Segoe UI/Verdana), Serif (Georgia/Times), Monospace |
+| Body Text Color | ink | General page text, blockquotes and inline code. Titles follow it unless Title Font Color is set. Header, footer and top bar keep their own colours |
+| Article Text Color | soft ink | Article reading text, tag pills and form labels |
+| Secondary Text Color | grey | Article info, image captions, table headings, `card` module titles and breadcrumbs |
 | Title Font | Georgia serif | Same options, for h1–h6 |
-| Title Font Color | ink | Headings and blog item titles |
+| Title Font Color | Body Text Color | Headings and blog item titles |
+| H1 Color … H6 Color | — | One colour per heading level (h1–h6 and `.h1`–`.h6`); blog item titles follow H2. Blank = Title Font Color |
 | Border Radius | Soft (`.5rem`) | Square / Soft / Round. Buttons and inputs use 80% of it |
 | Tile Hover Effect | Lift | None / Lift / Zoom image / Lift and zoom image, on article and feed tiles |
 | Entrance Animation | None | Fade in / Slide up / Zoom in as content scrolls into view. Loads `js/animate.js` only when set; honours `prefers-reduced-motion` |
@@ -134,10 +138,12 @@ Sections: Colors, Bootstrap Theme Colors, Typography, Shape, Animation.
 
 ### Header & Footer tab
 
-Sections: Header, Menu & Sticky Header, Footer.
+Sections: Top Bar, Header, Menu & Sticky Header, Footer.
 
 | Param | Default | Notes |
 |---|---|---|
+| Top Bar Background | ink | Background of the `topbar` position band |
+| Top Bar Text Color | white | Text and links in the top bar (resting text was 80% white; a picked colour applies at full strength) |
 | Header Color | Light | Light / Dark / Primary / Accent. Drop-down panels stay light |
 | Header Font Color | follows scheme | Resting menu text colour |
 | Header Spacing | Default | Compact / Default / Roomy navbar padding |

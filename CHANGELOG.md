@@ -9,6 +9,16 @@ that can break an existing site.
 
 ---
 
+## 1.7.0 (2026-11-23)
+
+Template 1.7.0, companion plugin `plg_system_bsbasicog` 1.2.1 (unchanged).
+
+### Feature: per-level heading colors (2026-11-23, branch feat/heading-level-colors)
+New Template Style params H1 Color through H6 Color (Appearance, under Title Font Color) set the text color of one heading level each, including `.h1`–`.h6` utility classes; article-body h2–h4 and blog item titles follow their level. A blank level falls back to Title Font Color, so existing sites render unchanged.
+
+### Feature: text and top bar colors (2026-11-23, branch feat/heading-level-colors)
+Typography gains Body Text Color, Article Text Color and Secondary Text Color (article info, captions, table headings, card module titles, breadcrumbs); Header & Footer gains a Top Bar group with Top Bar Background and Top Bar Text Color. Each sets its own CSS variable (`--bsbasic-text`, `--bsbasic-text-soft`, `--bsbasic-text-muted`, `--bsbasic-topbar-bg`, `--bsbasic-topbar-text`) rather than the shared ink palette, so the header, footer and nav keep their colors. A blank Title Font Color now follows Body Text Color. All blank by default; existing sites render unchanged.
+
 ## 1.6.1 (2026-11-22)
 
 Template 1.6.1, companion plugin `plg_system_bsbasicog` 1.2.1. Docs and packaging only; no change to template output.

@@ -15,7 +15,7 @@
 	.breadcrumb {
 		--bs-breadcrumb-divider: "/";
 		--bs-breadcrumb-divider-color: #b3b8c0;
-		--bs-breadcrumb-item-active-color: var(--bsbasic-muted);
+		--bs-breadcrumb-item-active-color: var(--bsbasic-text-muted);
 		margin-bottom: 0;
 		padding: 0;
 		// Core's mod_breadcrumbs adds px-3 (!important); the wrapper handles the indent.
@@ -24,7 +24,7 @@
 	}
 
 	a {
-		color: var(--bsbasic-muted);
+		color: var(--bsbasic-text-muted);
 		text-decoration: none;
 
 		&:hover {

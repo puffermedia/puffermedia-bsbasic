@@ -425,6 +425,33 @@ if ($headingColor !== '') {
 	$rootVars .= '--bsbasic-heading-color:' . $headingColor . ';';
 }
 
+// Text and top bar colours. Each overrides only its own variable, never the --bsbasic-ink
+// palette tokens (the dark header, footer and nav also use those).
+$textColorVars = [
+	'bodyTextColor'    => '--bsbasic-text',
+	'articleTextColor' => '--bsbasic-text-soft',
+	'mutedTextColor'   => '--bsbasic-text-muted',
+	'topbarBgColor'    => '--bsbasic-topbar-bg',
+	'topbarTextColor'  => '--bsbasic-topbar-text',
+];
+
+foreach ($textColorVars as $param => $var) {
+	$value = trim((string) $params->get($param, ''));
+
+	if ($value !== '') {
+		$rootVars .= $var . ':' . $value . ';';
+	}
+}
+
+// Per-level heading colours; a blank level falls back to Title Font Color in the CSS.
+for ($level = 1; $level <= 6; $level++) {
+	$levelColor = trim((string) $params->get('h' . $level . 'Color', ''));
+
+	if ($levelColor !== '') {
+		$rootVars .= '--bsbasic-h' . $level . '-color:' . $levelColor . ';';
+	}
+}
+
 if ($bodyFont !== 'default' && isset($fontStacks[$bodyFont])) {
 	$rootVars .= '--bsbasic-body-font:' . $fontStacks[$bodyFont] . ';';
 }

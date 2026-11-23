@@ -12,7 +12,10 @@
   --bsbasic-accent-dark: #cc0000;
   --bsbasic-primary: var(--bsbasic-accent);
   --bsbasic-ink: #16181d;
-  --bsbasic-heading-color: var(--bsbasic-ink);
+  --bsbasic-text: var(--bsbasic-ink);
+  --bsbasic-text-soft: var(--bsbasic-ink-soft);
+  --bsbasic-text-muted: var(--bsbasic-muted);
+  --bsbasic-heading-color: var(--bsbasic-text);
   --bsbasic-ink-soft: #3b4049;
   --bsbasic-muted: #656c78;
   --bsbasic-rule: #e3e5e9;
@@ -28,7 +31,7 @@
   --bsbasic-shadow-md: 0 10px 24px -18px rgba(22, 24, 29, 0.35);
   --bsbasic-body-font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
   --bsbasic-heading-font: Georgia, Iowan Old Style, Palatino Linotype, Times New Roman, serif;
-  --bs-body-color: var(--bsbasic-ink);
+  --bs-body-color: var(--bsbasic-text);
   --bs-body-bg: var(--bsbasic-paper);
   --bs-body-font-family: var(--bsbasic-body-font);
   --bs-primary: var(--bsbasic-primary);
@@ -42,7 +45,7 @@
 body {
   background: var(--bsbasic-paper);
   font-family: var(--bsbasic-body-font);
-  color: var(--bsbasic-ink);
+  color: var(--bsbasic-text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -54,7 +57,30 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.015em;
-  color: var(--bsbasic-heading-color);
+}
+
+h1, .h1 {
+  color: var(--bsbasic-h1-color, var(--bsbasic-heading-color));
+}
+
+h2, .h2 {
+  color: var(--bsbasic-h2-color, var(--bsbasic-heading-color));
+}
+
+h3, .h3 {
+  color: var(--bsbasic-h3-color, var(--bsbasic-heading-color));
+}
+
+h4, .h4 {
+  color: var(--bsbasic-h4-color, var(--bsbasic-heading-color));
+}
+
+h5, .h5 {
+  color: var(--bsbasic-h5-color, var(--bsbasic-heading-color));
+}
+
+h6, .h6 {
+  color: var(--bsbasic-h6-color, var(--bsbasic-heading-color));
 }
 
 a {
@@ -137,7 +163,7 @@ a:hover {
 label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--bsbasic-ink-soft);
+  color: var(--bsbasic-text-soft);
 }
 
 .alert {
@@ -757,18 +783,18 @@ html.bsbasic-has-sticky {
 }
 
 .bsbasic-topbar {
-  background: var(--bsbasic-ink);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--bsbasic-topbar-bg, var(--bsbasic-ink));
+  color: var(--bsbasic-topbar-text, rgba(255, 255, 255, 0.8));
   padding-block: 0.4rem;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
 }
 .bsbasic-topbar a {
-  color: #fff;
+  color: var(--bsbasic-topbar-text, #fff);
   text-decoration: none;
 }
 .bsbasic-topbar a:hover {
-  color: #fff;
+  color: var(--bsbasic-topbar-text, #fff);
   text-decoration: underline;
 }
 .bsbasic-topbar p,
@@ -922,7 +948,7 @@ html.bsbasic-has-sticky {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--bsbasic-muted);
+  color: var(--bsbasic-text-muted);
   margin: 0;
 }
 
@@ -1089,14 +1115,14 @@ html.bsbasic-has-sticky {
 .bsbasic-breadcrumbs .breadcrumb {
   --bs-breadcrumb-divider: "/";
   --bs-breadcrumb-divider-color: #b3b8c0;
-  --bs-breadcrumb-item-active-color: var(--bsbasic-muted);
+  --bs-breadcrumb-item-active-color: var(--bsbasic-text-muted);
   margin-bottom: 0;
   padding: 0;
   padding-inline: 0 !important;
   background: none;
 }
 .bsbasic-breadcrumbs a {
-  color: var(--bsbasic-muted);
+  color: var(--bsbasic-text-muted);
   text-decoration: none;
 }
 .bsbasic-breadcrumbs a:hover {
@@ -1195,7 +1221,7 @@ html.bsbasic-has-sticky {
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--bsbasic-muted);
+  color: var(--bsbasic-text-muted);
 }
 .bsbasic-content .article-info dt {
   position: absolute;
@@ -1222,7 +1248,7 @@ html.bsbasic-has-sticky {
 .bsbasic-content [itemprop=articleBody] {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: var(--bsbasic-ink-soft);
+  color: var(--bsbasic-text-soft);
 }
 .bsbasic-content .com-content-article__body > * + *,
 .bsbasic-content [itemprop=articleBody] > * + * {
@@ -1235,7 +1261,18 @@ html.bsbasic-has-sticky {
 .bsbasic-content [itemprop=articleBody] h3,
 .bsbasic-content [itemprop=articleBody] h4 {
   margin-top: 2.25rem;
-  color: var(--bsbasic-heading-color);
+}
+.bsbasic-content .com-content-article__body h2,
+.bsbasic-content [itemprop=articleBody] h2 {
+  color: var(--bsbasic-h2-color, var(--bsbasic-heading-color));
+}
+.bsbasic-content .com-content-article__body h3,
+.bsbasic-content [itemprop=articleBody] h3 {
+  color: var(--bsbasic-h3-color, var(--bsbasic-heading-color));
+}
+.bsbasic-content .com-content-article__body h4,
+.bsbasic-content [itemprop=articleBody] h4 {
+  color: var(--bsbasic-h4-color, var(--bsbasic-heading-color));
 }
 .bsbasic-content .com-content-article__body img,
 .bsbasic-content [itemprop=articleBody] img {
@@ -1267,7 +1304,7 @@ html.bsbasic-has-sticky {
   border-radius: 0.25rem;
   background: var(--bsbasic-surface);
   font-size: 0.88em;
-  color: var(--bsbasic-ink);
+  color: var(--bsbasic-text);
 }
 .bsbasic-content .com-content-article__body pre,
 .bsbasic-content [itemprop=articleBody] pre {
@@ -1294,7 +1331,7 @@ html.bsbasic-has-sticky {
 .bsbasic-content [itemprop=articleBody] .caption {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: var(--bsbasic-muted);
+  color: var(--bsbasic-text-muted);
 }
 .bsbasic-content blockquote {
   margin: 2rem 0;
@@ -1304,7 +1341,7 @@ html.bsbasic-has-sticky {
   font-size: 1.3rem;
   font-style: italic;
   line-height: 1.5;
-  color: var(--bsbasic-ink);
+  color: var(--bsbasic-text);
 }
 .bsbasic-content hr {
   margin: 2.5rem 0;
@@ -1328,7 +1365,7 @@ html.bsbasic-has-sticky {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--bsbasic-muted);
+  color: var(--bsbasic-text-muted);
 }
 .bsbasic-content table tbody tr:hover {
   background: var(--bsbasic-surface);
@@ -1372,7 +1409,7 @@ html.bsbasic-has-sticky {
 }
 .bsbasic-content .blog-item .item-title a,
 .bsbasic-content .blog-item h2 a {
-  color: var(--bsbasic-heading-color);
+  color: var(--bsbasic-h2-color, var(--bsbasic-heading-color));
   text-decoration: none;
 }
 .bsbasic-content .blog-item .item-title a:hover,
@@ -1532,7 +1569,7 @@ html.bsbasic-has-sticky {
   border-radius: 999px;
   font-size: 0.8rem;
   text-decoration: none;
-  color: var(--bsbasic-ink-soft);
+  color: var(--bsbasic-text-soft);
   transition: border-color 0.15s ease, color 0.15s ease;
 }
 .bsbasic-content .tags a:hover {

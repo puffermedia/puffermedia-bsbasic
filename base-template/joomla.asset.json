@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "puffermedia-bsbasic",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Assets used by the puffermedia-bsbasic site template.",
   "license": "GPL-2.0-or-later",
   "assets": [

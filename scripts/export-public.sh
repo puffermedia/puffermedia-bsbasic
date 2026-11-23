@@ -3,7 +3,8 @@
 #
 # Copies the committed state of a release (default: main) into the public
 # repo, leaving out private files (CLAUDE.md / CLAUDE.local.md in any folder,
-# docs/, .claude/), then commits it there as "Release v<version>" with that
+# docs/, .claude/) and the empty "Unreleased" heading in CHANGELOG.md,
+# then commits it there as "Release v<version>" with that
 # version's CHANGELOG section as the message, and tags it v<version>.
 # It never pushes: review the commit, then push by hand.
 #
@@ -30,7 +31,7 @@ while [ $# -gt 0 ]; do
         --ref) ref=${2:?--ref needs a value}; shift 2 ;;
         --dest) dest=${2:?--dest needs a value}; shift 2 ;;
         --no-commit) commit=0; shift ;;
-        -h|--help) sed -n '2,20p' "$0"; exit 0 ;;
+        -h|--help) sed -n '2,21p' "$0"; exit 0 ;;
         *) echo "Unknown option: $1" >&2; exit 2 ;;
     esac
 done
@@ -60,6 +61,24 @@ trap 'rm -rf "$tmp"' EXIT
 git archive "$commit_id" | tar -x -C "$tmp"
 find "$tmp" \( -name CLAUDE.md -o -name CLAUDE.local.md \) -type f -delete
 rm -rf "$tmp/docs" "$tmp/.claude"
+
+# Public CHANGELOG: drop the empty "## Unreleased" heading kept for the dev
+# workflow, and the version-policy sentence that explains it. A release
+# with entries still under "Unreleased" stops here instead of hiding them.
+changelog="$tmp/CHANGELOG.md"
+if [ -f "$changelog" ]; then
+    unreleased=$(awk '
+        /^## Unreleased[[:space:]]*$/ { found = 1; next }
+        found && /^## / { exit }
+        found && NF { print }
+    ' "$changelog")
+    [ -z "$unreleased" ] \
+        || die "CHANGELOG.md at $ref has entries under \"Unreleased\". Move them under the $version heading, make a new release, and run again."
+    perl -0777 -pi -e '
+        s/^## Unreleased[ \t]*\n\s*(?=^## )//m;
+        s/\s+New\s+entries\s+go\s+under\s+"Unreleased";.*?version\s+and\s+date\.//s;
+    ' "$changelog"
+fi
 
 # Stop before touching the public repo if anything local slipped through:
 # home or web-root paths and *.local hostnames. The bracketed letters keep

@@ -5,7 +5,7 @@
 	<author>PufferMedia</author>
 	<copyright>Copyright (C) 2026. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.6.1</version>
+	<version>1.7.0</version>
 	<description>TPL_BSBASIC_XML_DESCRIPTION</description>
 
 	<files>
@@ -158,6 +158,10 @@
 						<option value="monospace">TPL_BSBASIC_FONT_MONOSPACE</option>
 					</field>
 
+					<field name="bodyTextColor" type="color" default="" label="TPL_BSBASIC_FIELD_BODYTEXTCOLOR_LABEL" description="TPL_BSBASIC_FIELD_BODYTEXTCOLOR_DESC" />
+					<field name="articleTextColor" type="color" default="" label="TPL_BSBASIC_FIELD_ARTICLETEXTCOLOR_LABEL" description="TPL_BSBASIC_FIELD_ARTICLETEXTCOLOR_DESC" />
+					<field name="mutedTextColor" type="color" default="" label="TPL_BSBASIC_FIELD_MUTEDTEXTCOLOR_LABEL" description="TPL_BSBASIC_FIELD_MUTEDTEXTCOLOR_DESC" />
+
 					<field
 						name="headingFont"
 						type="list"
@@ -179,6 +183,13 @@
 						label="TPL_BSBASIC_FIELD_HEADINGCOLOR_LABEL"
 						description="TPL_BSBASIC_FIELD_HEADINGCOLOR_DESC"
 					/>
+
+					<field name="h1Color" type="color" default="" label="TPL_BSBASIC_FIELD_H1COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
+					<field name="h2Color" type="color" default="" label="TPL_BSBASIC_FIELD_H2COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
+					<field name="h3Color" type="color" default="" label="TPL_BSBASIC_FIELD_H3COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
+					<field name="h4Color" type="color" default="" label="TPL_BSBASIC_FIELD_H4COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
+					<field name="h5Color" type="color" default="" label="TPL_BSBASIC_FIELD_H5COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
+					<field name="h6Color" type="color" default="" label="TPL_BSBASIC_FIELD_H6COLOR_LABEL" description="TPL_BSBASIC_FIELD_HLEVELCOLOR_DESC" />
 				</fieldset>
 
 				<fieldset name="appearance_shape" label="TPL_BSBASIC_FIELDSET_APPEARANCE_SHAPE_LABEL">
@@ -276,6 +287,11 @@
 			</fieldset>
 
 			<fieldset name="headerfooter" label="TPL_BSBASIC_FIELDSET_HEADERFOOTER_LABEL">
+				<fieldset name="hf_topbar" label="TPL_BSBASIC_FIELDSET_HF_TOPBAR_LABEL">
+					<field name="topbarBgColor" type="color" default="" label="TPL_BSBASIC_FIELD_TOPBARBG_LABEL" description="TPL_BSBASIC_FIELD_TOPBARBG_DESC" />
+					<field name="topbarTextColor" type="color" default="" label="TPL_BSBASIC_FIELD_TOPBARTEXT_LABEL" description="TPL_BSBASIC_FIELD_TOPBARTEXT_DESC" />
+				</fieldset>
+
 				<fieldset name="hf_header" label="TPL_BSBASIC_FIELDSET_HF_HEADER_LABEL">
 					<field
 						name="headerScheme"
