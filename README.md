@@ -5,14 +5,18 @@ built from scratch. It uses Joomla's own bundled Bootstrap, keeps every module
 position of the core Cassiopeia template, and puts colours, fonts, layout and
 behaviour in Template Style params, so most sites need no code changes.
 
+It is also meant as a foundation for developers: plain SCSS partials, small
+PHP layouts and no build chain beyond Dart Sass make it easy to extend or
+fork for a bespoke site. The technical specs (repository layout, SCSS
+structure, building and packaging, and what each param emits) are in
+[DEVELOPING.md](DEVELOPING.md).
+
 The repo also holds a small companion plugin (Open Graph fields on articles,
 per-page Bootstrap components on menu items) and the scripts that build,
 package and copy the template.
 
 Current version: see `<version>` in `base-template/templateDetails.xml`.
-History: [CHANGELOG.md](CHANGELOG.md). Working on the code (repository layout,
-building, packaging, Bootstrap internals, what each param emits):
-[DEVELOPING.md](DEVELOPING.md).
+History: [CHANGELOG.md](CHANGELOG.md).
 
 ## Features
 

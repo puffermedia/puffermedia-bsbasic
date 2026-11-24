@@ -9,6 +9,13 @@ that can break an existing site.
 
 ---
 
+## 1.7.1 (2026-11-23)
+
+Template 1.7.1, companion plugin `plg_system_bsbasicog` 1.2.1 (unchanged).
+
+### Docs: README intro mentions developers (2026-11-23)
+The README introduction now says the template is also a foundation for developers and points to DEVELOPING.md for the technical specs.
+
 ## 1.7.0 (2026-11-23)
 
 Template 1.7.0, companion plugin `plg_system_bsbasicog` 1.2.1 (unchanged).
